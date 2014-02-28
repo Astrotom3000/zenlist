@@ -24,7 +24,7 @@ class RegisterController extends BaseController {
 		$rules = array(
 			'email' => array('required', 'email', 'unique:users,email'),
 			'password' => array('required', 'min:6'),
-			'username' => array('required', 'min:4', 'unique:users,username')
+			'username' => array('required', 'min:3', 'unique:users,username')
 		);
 		
 		$messages = array(

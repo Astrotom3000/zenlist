@@ -4,7 +4,69 @@
 	<meta charset="UTF-8">
 	<title>zenlist</title>
 	<link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/simplepajinate.css') }}">
   <link rel="icon" type="ico" href="{{ URL::asset('assets/img/favicon.ico') }}">
+  <style>
+.pajinate {
+  display: inline-block;
+  padding-left: 0;
+  margin-top: 24px;
+  border-radius: 4px;
+}
+.pajinate > a,
+.pajinate > span {
+  position: relative;
+  float: left;
+  padding: 6px 12px;
+  line-height: 1.428571429;
+  text-decoration: none;
+  color: #6dbc63;
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  margin-left: -1px;
+}
+.pajinate:first-child > a,
+.pajinate:first-child > span {
+  margin-left: 0;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+}
+.pajinate:last-child > a,
+.pajinate:last-child > span {
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.pajinate > a:hover,
+.pajinate > span:hover,
+.pajinate > a:focus,
+.pajinate > span:focus {
+  color: #49933f;
+  background-color: #eeeeee;
+  border-color: #dddddd;
+}
+.pajinate > .active > a,
+.pajinate > .active > span,
+.pajinate > .active > a:hover,
+.pajinate > .active > span:hover,
+.pajinate > .active > a:focus,
+.pajinate > .active > span:focus {
+  z-index: 2;
+  color: #ffffff;
+  background-color: #6dbc63;
+  border-color: #6dbc63;
+  cursor: default;
+}
+.pajinate > .disabled > span,
+.pajinate > .disabled > span:hover,
+.pajinate > .disabled > span:focus,
+.pajinate > .disabled > a,
+.pajinate > .disabled > a:hover,
+.pajinate > .disabled > a:focus {
+  color: #999999;
+  background-color: #ffffff;
+  border-color: #dddddd;
+  cursor: not-allowed;
+}</style>
 </head>
 <body>
 <section id="navigation">
@@ -24,7 +86,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"> 
-    {{ Form::open(array("route" => "search.store", 'class'=>'navbar-form navbar-left')) }}
+    {{ Form::open(array("route" => "search.store", 'class'=>'navbar-form navbar-left', 'id'=>'searchForm')) }}
 			<div class="auto-search">
 				<div class="input-group">
         {{ Form::text('searchterm', '', array('class' => 'typeahead', 'placeholder' => 'Search for movies, tv shows, people.')) }}
@@ -70,6 +132,7 @@
 <script src="{{ URL::asset('assets/js/typeahead.bundle.js') }}"></script>
 <script src="{{ URL::asset('assets/js/handlebars.js') }}"></script>
 <script src="{{ URL::asset('assets/js/autosearch.js') }}"></script>
+<script src="{{ URL::asset('assets/js/jquery.pajinate.js') }}"></script>
 <!--Load custom scripts after base-->
 @yield('scripts')
 

@@ -5790,6 +5790,9 @@ button.close {
   padding-bottom: 150px;
   text-align: left;
 }
+#results .result li {
+  list-style-type: none;
+}
 /* Login/Registration form */
 .input-form {
   position: relative;
@@ -5865,7 +5868,7 @@ button.close {
 }
 /* Typeahead Search styles below */
 .auto-search {
-  margin-left: 110px;
+  margin-left: 50%;
   width: 450px;
 }
 .auto-search .btn-lg {

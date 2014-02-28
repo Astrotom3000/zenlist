@@ -1520,6 +1520,7 @@ return array(
     'Psr\\Log\\NullLogger' => $vendorDir . '/psr/log/Psr/Log/NullLogger.php',
     'RegisterController' => $baseDir . '/app/controllers/RegisterController.php',
     'RemindersController' => $baseDir . '/app/controllers/RemindersController.php',
+    'SearchController' => $baseDir . '/app/controllers/SearchController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'SessionsController' => $baseDir . '/app/controllers/SessionsController.php',
     'SettingsController' => $baseDir . '/app/controllers/SettingsController.php',
