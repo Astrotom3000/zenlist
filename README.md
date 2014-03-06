@@ -1,4 +1,4 @@
 zenlist
 =======
 
-updated larazen
+Built with laravel 4 framework, mysql, and jquery
