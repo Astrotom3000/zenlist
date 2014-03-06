@@ -50,10 +50,6 @@ Route::resource('sessions', 'SessionsController', ['only' => ['index', 'create',
 Route::resource('settings', 'SettingsController', ['only' => ['index', 'create', 'store']]);
 Route::resource('search', 'SearchController', ['only' => ['store']]);
 
-//Ajax test
-//Show form to create settings
-Route::get('settings', 'SettingsController@create');
-
 Route::get('movie/{id}/', function($id)
 {	
 	if(Auth::check()){

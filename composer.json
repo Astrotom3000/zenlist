@@ -5,9 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.1.*",
-		"way/generators": "dev-master",
-		"laracasts/utilities": "1.0",
-		"fedeisas/laravel-js-routes": "1.*"
+		"way/generators": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

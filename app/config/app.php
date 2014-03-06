@@ -106,9 +106,7 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Way\Generators\GeneratorsServiceProvider',
-		'Fedeisas\LaravelJsRoutes\LaravelJsRoutesServiceProvider',
-		'Laracasts\Utilities\UtilitiesServiceProvider'
+		'Way\Generators\GeneratorsServiceProvider'
 
 	),
 

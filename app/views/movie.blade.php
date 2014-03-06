@@ -26,16 +26,14 @@
       </div>
       <div class="crew">
       </div>
-      <div class="container" id="cast">
+      <div id="cast">
       	<h2 id="cast-header"></h2>
-	      <div class="row cast-box">
-		      <div class="col-sm-3" id="cast-col-1">
+		      <div class="col-sm-4" id="cast-col-1">
 		      </div>
-		      <div class="col-sm-3" id="cast-col-2">
+		      <div class="col-sm-4" id="cast-col-2">
 		      </div>
-		      <div class="col-sm-3" id="cast-col-3">
+		      <div class="col-sm-4" id="cast-col-3">
 		      </div>
-	      </div>
       </div><!--cast container-->
       <div class="reviews"></div>
 		</div>

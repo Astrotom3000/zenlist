@@ -5847,13 +5847,13 @@ button.close {
   font-size: 15px;
   padding-top: 30px;
 }
-#mainCol .container {
-  padding: 40px 5px;
+#mainCol #cast-header {
+  padding: 14px 10px;
 }
-#mainCol .container #cast {
+#mainCol #cast {
   padding-top: 50px;
 }
-#mainCol .container .cast-box {
+#mainCol .cast-box {
   padding-top: 15px;
 }
 #leftCol {
