@@ -10,7 +10,6 @@ class SearchController extends BaseController {
 	public function store()
 	{
 		$search = Input::get('searchterm');
-
 		return View::make('searchresults')->with('searchword', $search);
 	}
 

@@ -46,7 +46,8 @@
     &,
     &:hover,
     &:focus {
-      background-color: @nav-link-hover-bg;
+      background-color: #fff;//@nav-link-hover-bg;
+      color: #000;
       border-color: @link-color;
     }
   }
@@ -76,18 +77,21 @@
 .nav-tabs {
   border-bottom: 1px solid @nav-tabs-border-color;
   > li {
-    float: left;
+    float: right;
     // Make the list-items overlay the bottom border
     margin-bottom: -1px;
 
     // Actual tabs (as links)
     > a {
+      font-weight: 400;
+      color: @gray-light;
       margin-right: 2px;
       line-height: @line-height-base;
-      border: 1px solid transparent;
-      border-radius: @border-radius-base @border-radius-base 0 0;
+      border-bottom: 2px solid transparent;
+      //border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
-        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        color: #000;
+        border-bottom: 2px solid @brand-primary;
       }
     }
 
@@ -98,8 +102,7 @@
       &:focus {
         color: @nav-tabs-active-link-hover-color;
         background-color: @nav-tabs-active-link-hover-bg;
-        border: 1px solid @nav-tabs-active-link-hover-border-color;
-        border-bottom-color: transparent;
+        border-bottom: 2px solid @brand-primary;
         cursor: default;
       }
     }
@@ -158,8 +161,8 @@
 // -------------------------
 
 .nav-justified {
-  width: 100%;
-
+  width: 70%;
+  margin-left: 25%;
   > li {
     float: none;
      > a {
@@ -188,29 +191,30 @@
 //
 // Mixin for adding on top the shared `.nav-justified` styles for our tabs
 .nav-tabs-justified {
-  border-bottom: 0;
-
+  //border-bottom: 0;
+  //border-bottom: 1px solid transparent;
   > li > a {
     // Override margin from .nav-tabs
     margin-right: 0;
     border-radius: @border-radius-base;
+    // border-bottom: 2px solid transparent;
   }
 
   > .active > a,
   > .active > a:hover,
   > .active > a:focus {
-    border: 1px solid @nav-tabs-justified-link-border-color;
+    border-bottom: 2px solid @brand-primary;
   }
 
   @media (min-width: @screen-sm-min) {
     > li > a {
-      border-bottom: 1px solid @nav-tabs-justified-link-border-color;
+      //border-bottom: 1px solid transparent;
       border-radius: @border-radius-base @border-radius-base 0 0;
     }
     > .active > a,
     > .active > a:hover,
     > .active > a:focus {
-      border-bottom-color: @nav-tabs-justified-active-link-border-color;
+      border-bottom: 2px solid @brand-primary;
     }
   }
 }

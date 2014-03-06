@@ -3,6 +3,12 @@
 /* import bootstrap */
 @import "bootstrap/bootstrap.less";
 
+.flash-message{
+  position: absolute;
+  left:75%;
+  top:85px;
+}
+
 /* Headers */
 .navbar-brand{
   padding: 0;
@@ -20,15 +26,127 @@
 
 /* Content */
 .content{
+  .flash-message{
+  text-align: center;
+}
   padding-bottom: 150px;
   text-align: left;
 }
 
-#results{
-  .result li{
-    list-style-type: none;
+.results{
+    margin-left: 27%;
+    img{
+    float:left;
+    height: 180px;
+    padding-right: 10px;
   }
 }
+.result-box{
+  height: 200px;
+}
+
+/* Movie display */
+
+.movie-header{
+  padding-top: 0px;
+  text-align: center;
+    .year{
+    font-size: 30px;
+  }
+
+  .dropdown-menu{
+    padding: 0;
+    li{
+      text-align: left;
+      a{
+          &:hover {
+          background-color: @brand-primary;
+          color: #fff;
+        }
+      }
+    }
+  }
+} //movie-header
+
+  .zengreen{
+    color: @zengreen;
+  }
+
+  .percent{
+    font-size: 30px;
+    color: @brand-primary;
+  }
+
+.movie-container{
+    background-color: @gray-dark;
+    padding-bottom: 100px;
+}
+#mainCol{
+  padding-top: 20px;
+  //padding-right: 10%;
+  //padding-left: 27px;
+  .tagline{
+    margin-left: 0;
+  }
+
+  .crew{
+    font-size: 15px;
+    padding-top: 30px;
+  }
+
+  .container{
+  	padding: 40px 5px;
+  	#cast{
+  		padding-top: 50px;
+  	}
+
+  	.cast-box{
+  		padding-top: 15px;
+  	}
+  }
+
+}
+#leftCol{
+      padding-top: 15px;
+      @media(min-width: 1366px){
+      .poster{
+        padding-bottom: 10px;
+        margin-left: 20%;
+      }
+      .sideInfo{
+        margin-left: 20%;
+        h4{
+          margin-bottom: 5px;
+        }
+      }
+      .ratings{
+         margin-left: 20%;
+        text-align: left;
+        padding-bottom: 20px;
+        .overlay{
+          background-color: #fff;//#f7f5f2;
+        }
+        i{
+            color: @gray-dark;
+        }
+        i:hover{
+              color: @brand-primary;
+        }
+      }
+    }
+  }
+
+
+#preloader{
+  text-align: center;
+  margin-top: 20px;
+  display: none;
+  img{
+    width: 50px;
+    height: 50px;
+  }
+}
+
 
 /* Login/Registration form */
 .input-form{
@@ -56,7 +174,7 @@
     font-size: 20px;
     position: absolute;
     right: 15px;
-    top: 15px;
+    top: 7px;
     .transition(.25s);
   }  
 
@@ -91,11 +209,20 @@
 }
 
 /* Helpers */
+.align-center{
+  text-align: center;
+}
+.push-right{
+  margin-left: 24%;
+}
 .add-padding{
   padding: 15px 10px;
 }
 .pad-bottom{
   padding-bottom: 500px;
+}
+.pad-top{
+  padding-top: 100px;
 }
 .pad-left{
   padding-left: 40px;
@@ -112,7 +239,7 @@
 
 /* Typeahead Search styles below */
 .auto-search{
-  margin-left: 50%;
+  margin-left: 40%;
   width: 450px;
 }
 .auto-search .btn-lg{
@@ -178,7 +305,7 @@
 .tt-dropdown-menu {
   width: 450px;
   margin-top: 12px;
-  padding: 8px 0;
+  padding: 0;
   background-color: #fff;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);

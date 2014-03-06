@@ -13,13 +13,15 @@
 
 Route::get('/', array('as' => 'home', function()
 {
-	return View::make('home');
+	if(Auth::check()){
+		return View::make('explore');
+	}else
+		return View::make('home');
 }));
 
 Route::get('home', function(){
 	return View::make('home');
 });
-
 
 Route::get('explore', array('as' => 'explore', function()
 {
@@ -40,16 +42,32 @@ Route::get('lists', function()
 
 Route::controller('password', 'RemindersController');
 
-Route::get('register', 'RegisterController@create');
-//Route::get('login', 'SessionsController@create');
+Route::get('register',  array('as' => 'registration', 'uses' => 'RegisterController@create'));
 Route::get('logout', 'SessionsController@destroy');
 
 Route::resource('registration', 'RegisterController', ['only' => ['index', 'create', 'store']]);
 Route::resource('sessions', 'SessionsController', ['only' => ['index', 'create', 'destroy', 'store']]);
 Route::resource('settings', 'SettingsController', ['only' => ['index', 'create', 'store']]);
 Route::resource('search', 'SearchController', ['only' => ['store']]);
+
 //Ajax test
 //Show form to create settings
 Route::get('settings', 'SettingsController@create');
 
+Route::get('movie/{id}/', function($id)
+{	
+	if(Auth::check()){
+		$loggedin = 'yes';
+	}
+	else
+		$loggedin = 'no'; 
 
+	return View::make('movie', compact('id', 'loggedin'));
+});
+
+Route::get('movie/{id}/related', function($id)
+{
+	return View::make('related', compact('id'));
+});
+
+Route::resource('favorites', 'FavoritesController', ['only' => ['index', 'store', 'destroy']]);

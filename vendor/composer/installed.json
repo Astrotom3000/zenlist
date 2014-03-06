@@ -1,52 +1,5 @@
 [
     {
-        "name": "mustache/mustache",
-        "version": "v2.4.1",
-        "version_normalized": "2.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/bobthecow/mustache.php.git",
-            "reference": "14bc3b4f6a4770b535fc433bfd0435471ed386c6"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/bobthecow/mustache.php/zipball/14bc3b4f6a4770b535fc433bfd0435471ed386c6",
-            "reference": "14bc3b4f6a4770b535fc433bfd0435471ed386c6",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.2.4"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "*"
-        },
-        "time": "2013-08-13 04:49:23",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Mustache": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Justin Hileman",
-                "email": "justin@justinhileman.info",
-                "homepage": "http://justinhileman.com"
-            }
-        ],
-        "description": "A Mustache implementation in PHP.",
-        "homepage": "https://github.com/bobthecow/mustache.php",
-        "keywords": [
-            "mustache",
-            "templating"
-        ]
-    },
-    {
         "name": "symfony/translation",
         "version": "v2.4.2",
         "version_normalized": "2.4.2.0",
@@ -946,59 +899,6 @@
         ]
     },
     {
-        "name": "patchwork/utf8",
-        "version": "v1.1.18",
-        "version_normalized": "1.1.18.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
-            "reference": "66a936cc633fe13378c91f81030d5193be968480"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/66a936cc633fe13378c91f81030d5193be968480",
-            "reference": "66a936cc633fe13378c91f81030d5193be968480",
-            "shasum": ""
-        },
-        "require": {
-            "lib-pcre": ">=7.3",
-            "php": ">=5.3.0"
-        },
-        "suggest": {
-            "ext-iconv": "Use iconv for best performance",
-            "ext-intl": "Use Intl for best performance",
-            "ext-mbstring": "Use Mbstring for best performance"
-        },
-        "time": "2014-02-02 17:09:49",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Patchwork": "class/",
-                "Normalizer": "class/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "(Apache-2.0 or GPL-2.0)"
-        ],
-        "authors": [
-            {
-                "name": "Nicolas Grekas",
-                "email": "p@tchwork.com",
-                "role": "Developer"
-            }
-        ],
-        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
-        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
-        "keywords": [
-            "i18n",
-            "unicode",
-            "utf-8",
-            "utf8"
-        ]
-    },
-    {
         "name": "nesbot/carbon",
         "version": "1.8.0",
         "version_normalized": "1.8.0.0",
@@ -1442,125 +1342,6 @@
         ]
     },
     {
-        "name": "laravel/framework",
-        "version": "v4.1.22",
-        "version_normalized": "4.1.22.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/laravel/framework.git",
-            "reference": "a18a892c9d768464249baa1d16117fe52e0a7004"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/laravel/framework/zipball/a18a892c9d768464249baa1d16117fe52e0a7004",
-            "reference": "a18a892c9d768464249baa1d16117fe52e0a7004",
-            "shasum": ""
-        },
-        "require": {
-            "classpreloader/classpreloader": "1.0.*",
-            "d11wtq/boris": "1.0.*",
-            "filp/whoops": "1.0.10",
-            "ircmaxell/password-compat": "1.0.*",
-            "jeremeamia/superclosure": "1.0.*",
-            "monolog/monolog": "1.*",
-            "nesbot/carbon": "1.*",
-            "patchwork/utf8": "1.1.*",
-            "php": ">=5.3.0",
-            "phpseclib/phpseclib": "0.3.*",
-            "predis/predis": "0.8.*",
-            "stack/builder": "1.0.*",
-            "swiftmailer/swiftmailer": "5.0.*",
-            "symfony/browser-kit": "2.4.*",
-            "symfony/console": "2.4.*",
-            "symfony/css-selector": "2.4.*",
-            "symfony/debug": "2.4.*",
-            "symfony/dom-crawler": "2.4.*",
-            "symfony/finder": "2.4.*",
-            "symfony/http-foundation": "2.4.*",
-            "symfony/http-kernel": "2.4.*",
-            "symfony/process": "2.4.*",
-            "symfony/routing": "2.4.*",
-            "symfony/translation": "2.4.*"
-        },
-        "replace": {
-            "illuminate/auth": "self.version",
-            "illuminate/cache": "self.version",
-            "illuminate/config": "self.version",
-            "illuminate/console": "self.version",
-            "illuminate/container": "self.version",
-            "illuminate/cookie": "self.version",
-            "illuminate/database": "self.version",
-            "illuminate/encryption": "self.version",
-            "illuminate/events": "self.version",
-            "illuminate/exception": "self.version",
-            "illuminate/filesystem": "self.version",
-            "illuminate/foundation": "self.version",
-            "illuminate/hashing": "self.version",
-            "illuminate/html": "self.version",
-            "illuminate/http": "self.version",
-            "illuminate/log": "self.version",
-            "illuminate/mail": "self.version",
-            "illuminate/pagination": "self.version",
-            "illuminate/queue": "self.version",
-            "illuminate/redis": "self.version",
-            "illuminate/routing": "self.version",
-            "illuminate/session": "self.version",
-            "illuminate/support": "self.version",
-            "illuminate/translation": "self.version",
-            "illuminate/validation": "self.version",
-            "illuminate/view": "self.version",
-            "illuminate/workbench": "self.version"
-        },
-        "require-dev": {
-            "aws/aws-sdk-php": "2.5.*",
-            "iron-io/iron_mq": "1.5.*",
-            "mockery/mockery": "0.9.*",
-            "pda/pheanstalk": "2.1.*",
-            "phpunit/phpunit": "3.7.*"
-        },
-        "suggest": {
-            "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
-        },
-        "time": "2014-02-20 15:13:32",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "4.1-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "classmap": [
-                [
-                    "src/Illuminate/Queue/IlluminateQueueClosure.php"
-                ]
-            ],
-            "files": [
-                "src/Illuminate/Support/helpers.php"
-            ],
-            "psr-0": {
-                "Illuminate": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Taylor Otwell",
-                "email": "taylorotwell@gmail.com",
-                "homepage": "https://github.com/taylorotwell",
-                "role": "Developer"
-            }
-        ],
-        "description": "The Laravel Framework.",
-        "keywords": [
-            "framework",
-            "laravel"
-        ]
-    },
-    {
         "name": "phpseclib/phpseclib",
         "version": "0.3.6",
         "version_normalized": "0.3.6.0",
@@ -1657,240 +1438,262 @@
         ]
     },
     {
-        "name": "doctrine/lexer",
+        "name": "laravel/framework",
+        "version": "v4.1.23",
+        "version_normalized": "4.1.23.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/laravel/framework.git",
+            "reference": "054c1a29aaf537c6c6ca7e7804375c671eddcaaf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/laravel/framework/zipball/054c1a29aaf537c6c6ca7e7804375c671eddcaaf",
+            "reference": "054c1a29aaf537c6c6ca7e7804375c671eddcaaf",
+            "shasum": ""
+        },
+        "require": {
+            "classpreloader/classpreloader": "1.0.*",
+            "d11wtq/boris": "1.0.*",
+            "filp/whoops": "1.0.10",
+            "ircmaxell/password-compat": "1.0.*",
+            "jeremeamia/superclosure": "1.0.*",
+            "monolog/monolog": "1.*",
+            "nesbot/carbon": "1.*",
+            "patchwork/utf8": "1.1.*",
+            "php": ">=5.3.0",
+            "phpseclib/phpseclib": "0.3.*",
+            "predis/predis": "0.8.*",
+            "stack/builder": "1.0.*",
+            "swiftmailer/swiftmailer": "5.0.*",
+            "symfony/browser-kit": "2.4.*",
+            "symfony/console": "2.4.*",
+            "symfony/css-selector": "2.4.*",
+            "symfony/debug": "2.4.*",
+            "symfony/dom-crawler": "2.4.*",
+            "symfony/finder": "2.4.*",
+            "symfony/http-foundation": "2.4.*",
+            "symfony/http-kernel": "2.4.*",
+            "symfony/process": "2.4.*",
+            "symfony/routing": "2.4.*",
+            "symfony/translation": "2.4.*"
+        },
+        "replace": {
+            "illuminate/auth": "self.version",
+            "illuminate/cache": "self.version",
+            "illuminate/config": "self.version",
+            "illuminate/console": "self.version",
+            "illuminate/container": "self.version",
+            "illuminate/cookie": "self.version",
+            "illuminate/database": "self.version",
+            "illuminate/encryption": "self.version",
+            "illuminate/events": "self.version",
+            "illuminate/exception": "self.version",
+            "illuminate/filesystem": "self.version",
+            "illuminate/foundation": "self.version",
+            "illuminate/hashing": "self.version",
+            "illuminate/html": "self.version",
+            "illuminate/http": "self.version",
+            "illuminate/log": "self.version",
+            "illuminate/mail": "self.version",
+            "illuminate/pagination": "self.version",
+            "illuminate/queue": "self.version",
+            "illuminate/redis": "self.version",
+            "illuminate/routing": "self.version",
+            "illuminate/session": "self.version",
+            "illuminate/support": "self.version",
+            "illuminate/translation": "self.version",
+            "illuminate/validation": "self.version",
+            "illuminate/view": "self.version",
+            "illuminate/workbench": "self.version"
+        },
+        "require-dev": {
+            "aws/aws-sdk-php": "2.5.*",
+            "iron-io/iron_mq": "1.5.*",
+            "mockery/mockery": "0.9.*",
+            "pda/pheanstalk": "2.1.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "suggest": {
+            "doctrine/dbal": "Allow renaming columns and dropping SQLite columns."
+        },
+        "time": "2014-02-28 22:07:47",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "4.1-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                [
+                    "src/Illuminate/Queue/IlluminateQueueClosure.php"
+                ]
+            ],
+            "files": [
+                "src/Illuminate/Support/helpers.php"
+            ],
+            "psr-0": {
+                "Illuminate": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Taylor Otwell",
+                "email": "taylorotwell@gmail.com",
+                "homepage": "https://github.com/taylorotwell",
+                "role": "Developer"
+            }
+        ],
+        "description": "The Laravel Framework.",
+        "keywords": [
+            "framework",
+            "laravel"
+        ]
+    },
+    {
+        "name": "patchwork/utf8",
+        "version": "v1.1.20",
+        "version_normalized": "1.1.20.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/nicolas-grekas/Patchwork-UTF8.git",
+            "reference": "aea0de833cba7cf2c25239be71f2787edaee36d5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/nicolas-grekas/Patchwork-UTF8/zipball/aea0de833cba7cf2c25239be71f2787edaee36d5",
+            "reference": "aea0de833cba7cf2c25239be71f2787edaee36d5",
+            "shasum": ""
+        },
+        "require": {
+            "lib-pcre": ">=7.3",
+            "php": ">=5.3.0"
+        },
+        "suggest": {
+            "ext-iconv": "Use iconv for best performance",
+            "ext-intl": "Use Intl for best performance",
+            "ext-mbstring": "Use Mbstring for best performance"
+        },
+        "time": "2014-03-01 20:01:07",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Patchwork": "class/",
+                "Normalizer": "class/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "(Apache-2.0 or GPL-2.0)"
+        ],
+        "authors": [
+            {
+                "name": "Nicolas Grekas",
+                "email": "p@tchwork.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "Extensive, portable and performant handling of UTF-8 and grapheme clusters for PHP",
+        "homepage": "https://github.com/nicolas-grekas/Patchwork-UTF8",
+        "keywords": [
+            "i18n",
+            "unicode",
+            "utf-8",
+            "utf8"
+        ]
+    },
+    {
+        "name": "laracasts/utilities",
         "version": "v1.0",
         "version_normalized": "1.0.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/lexer.git",
-            "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb"
+            "url": "https://github.com/laracasts/PHP-Vars-To-Js-Transformer.git",
+            "reference": "743de53d187cb6d1eebce7cb3a9938c27a446d3a"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/lexer/zipball/2f708a85bb3aab5d99dab8be435abd73e0b18acb",
-            "reference": "2f708a85bb3aab5d99dab8be435abd73e0b18acb",
+            "url": "https://api.github.com/repos/laracasts/PHP-Vars-To-Js-Transformer/zipball/743de53d187cb6d1eebce7cb3a9938c27a446d3a",
+            "reference": "743de53d187cb6d1eebce7cb3a9938c27a446d3a",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2013-01-12 18:59:04",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Lexer\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Base library for a lexer that can be used in Top-Down, Recursive Descent Parsers.",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "lexer",
-            "parser"
-        ]
-    },
-    {
-        "name": "doctrine/annotations",
-        "version": "v1.1.2",
-        "version_normalized": "1.1.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/annotations.git",
-            "reference": "40db0c96985aab2822edbc4848b3bd2429e02670"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/annotations/zipball/40db0c96985aab2822edbc4848b3bd2429e02670",
-            "reference": "40db0c96985aab2822edbc4848b3bd2429e02670",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/lexer": "1.*",
-            "php": ">=5.3.2"
+            "illuminate/support": "4.1.*",
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "doctrine/cache": "1.*"
+            "phpspec/phpspec": "2.0.*@dev"
         },
-        "time": "2013-06-16 21:33:03",
+        "time": "2014-02-28 14:57:09",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
-                "Doctrine\\Common\\Annotations\\": "lib/"
+                "Laracasts\\Utilities": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
         "authors": [
             {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
+                "name": "Jeffrey Way",
+                "email": "jeffrey@laracasts.com"
             }
         ],
-        "description": "Docblock Annotations Parser",
-        "homepage": "http://www.doctrine-project.org",
+        "description": "Transform your PHP to JavaScript",
         "keywords": [
-            "annotations",
-            "docblock",
-            "parser"
+            "javascript",
+            "laravel"
         ]
     },
     {
-        "name": "doctrine/collections",
-        "version": "v1.2",
-        "version_normalized": "1.2.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/collections.git",
-            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/collections/zipball/b99c5c46c87126201899afe88ec490a25eedd6a2",
-            "reference": "b99c5c46c87126201899afe88ec490a25eedd6a2",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2014-02-03 23:07:43",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.2.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Collections\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Collections Abstraction library",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "array",
-            "collections",
-            "iterator"
-        ]
-    },
-    {
-        "name": "doctrine/cache",
-        "version": "v1.3.0",
+        "name": "fedeisas/laravel-js-routes",
+        "version": "1.3",
         "version_normalized": "1.3.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/doctrine/cache.git",
-            "reference": "e16d7adf45664a50fa86f515b6d5e7f670130449"
+            "url": "https://github.com/fedeisas/laravel-js-routes.git",
+            "reference": "ae1017c8e2de52f4edbcdf5b6a5a21b101cdd512"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/cache/zipball/e16d7adf45664a50fa86f515b6d5e7f670130449",
-            "reference": "e16d7adf45664a50fa86f515b6d5e7f670130449",
+            "url": "https://api.github.com/repos/fedeisas/laravel-js-routes/zipball/ae1017c8e2de52f4edbcdf5b6a5a21b101cdd512",
+            "reference": "ae1017c8e2de52f4edbcdf5b6a5a21b101cdd512",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.3.2"
-        },
-        "conflict": {
-            "doctrine/common": ">2.2,<2.4"
+            "illuminate/console": "~4.1",
+            "illuminate/filesystem": "~4.1",
+            "illuminate/routing": "~4.1",
+            "illuminate/support": "~4.1",
+            "php": ">=5.3.0"
         },
         "require-dev": {
-            "phpunit/phpunit": ">=3.7",
-            "satooshi/php-coveralls": "~0.6"
+            "illuminate/events": "~4.1",
+            "jakub-onderka/php-console-highlighter": "dev-master",
+            "jakub-onderka/php-parallel-lint": "*",
+            "mockery/mockery": "0.8.0",
+            "phpmd/phpmd": "1.5.*",
+            "phpunit/phpunit": "3.7.27",
+            "squizlabs/php_codesniffer": "1.*"
         },
-        "time": "2013-10-25 19:04:14",
+        "time": "2014-02-13 03:08:10",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Cache\\": "lib/"
-            }
+            "psr-4": {
+                "Fedeisas\\LaravelJsRoutes\\": "src/"
+            },
+            "classmap": [
+                "src/Fedeisas/LaravelJsRoutes/Commands",
+                "src/Fedeisas/LaravelJsRoutes/Generators"
+            ]
         },
         "notification-url": "https://packagist.org/downloads/",
         "license": [
@@ -1898,325 +1701,16 @@
         ],
         "authors": [
             {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
+                "name": "Fede Isas",
+                "email": "fedeisas@hotmail.com"
             }
         ],
-        "description": "Caching library offering an object-oriented API for many cache backends",
-        "homepage": "http://www.doctrine-project.org",
+        "description": "Laravel routes from Javascript",
         "keywords": [
-            "cache",
-            "caching"
-        ]
-    },
-    {
-        "name": "doctrine/inflector",
-        "version": "v1.0",
-        "version_normalized": "1.0.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/inflector.git",
-            "reference": "54b8333d2a5682afdc690060c1cf384ba9f47f08"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/inflector/zipball/54b8333d2a5682afdc690060c1cf384ba9f47f08",
-            "reference": "54b8333d2a5682afdc690060c1cf384ba9f47f08",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2"
-        },
-        "time": "2013-01-10 21:49:15",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\Inflector\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Common String Manipulations with regard to casing and singular/plural rules.",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "inflection",
-            "pluarlize",
-            "singuarlize",
-            "string"
-        ]
-    },
-    {
-        "name": "doctrine/common",
-        "version": "v2.4.1",
-        "version_normalized": "2.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/common.git",
-            "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/common/zipball/ceb18cf9b0230f3ea208b6238130fd415abda0a7",
-            "reference": "ceb18cf9b0230f3ea208b6238130fd415abda0a7",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/annotations": "1.*",
-            "doctrine/cache": "1.*",
-            "doctrine/collections": "1.*",
-            "doctrine/inflector": "1.*",
-            "doctrine/lexer": "1.*",
-            "php": ">=5.3.2"
-        },
-        "time": "2013-09-07 10:20:34",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Common\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            },
-            {
-                "name": "Johannes Schmitt",
-                "email": "schmittjoh@gmail.com",
-                "homepage": "http://jmsyst.com",
-                "role": "Developer of wrapped JMSSerializerBundle"
-            }
-        ],
-        "description": "Common Library for Doctrine projects",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "annotations",
-            "collections",
-            "eventmanager",
-            "persistence",
-            "spl"
-        ]
-    },
-    {
-        "name": "doctrine/dbal",
-        "version": "v2.4.2",
-        "version_normalized": "2.4.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/dbal.git",
-            "reference": "fec965d330c958e175c39e61c3f6751955af32d0"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/dbal/zipball/fec965d330c958e175c39e61c3f6751955af32d0",
-            "reference": "fec965d330c958e175c39e61c3f6751955af32d0",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/common": "~2.4",
-            "php": ">=5.3.2"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "3.7.*",
-            "symfony/console": "~2.0"
-        },
-        "suggest": {
-            "symfony/console": "Allows use of the command line interface"
-        },
-        "time": "2014-01-01 16:43:57",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\DBAL\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            }
-        ],
-        "description": "Database Abstraction Layer",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "dbal",
-            "persistence",
-            "queryobject"
-        ]
-    },
-    {
-        "name": "doctrine/orm",
-        "version": "v2.4.2",
-        "version_normalized": "2.4.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/doctrine2.git",
-            "reference": "0363a5548d9263f979f9ca149decb9cfc66419ab"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/0363a5548d9263f979f9ca149decb9cfc66419ab",
-            "reference": "0363a5548d9263f979f9ca149decb9cfc66419ab",
-            "shasum": ""
-        },
-        "require": {
-            "doctrine/collections": "~1.1",
-            "doctrine/dbal": "~2.4",
-            "ext-pdo": "*",
-            "php": ">=5.3.2",
-            "symfony/console": "~2.0"
-        },
-        "require-dev": {
-            "satooshi/php-coveralls": "dev-master",
-            "symfony/yaml": "~2.1"
-        },
-        "suggest": {
-            "symfony/yaml": "If you want to use YAML Metadata Mapping Driver"
-        },
-        "time": "2014-02-08 16:35:09",
-        "bin": [
-            "bin/doctrine",
-            "bin/doctrine.php"
-        ],
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "2.4.x-dev"
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\ORM\\": "lib/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/",
-                "role": "Creator"
-            },
-            {
-                "name": "Guilherme Blanco",
-                "email": "guilhermeblanco@gmail.com",
-                "homepage": "http://www.instaclick.com"
-            },
-            {
-                "name": "Roman Borschel",
-                "email": "roman@code-factory.org"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            }
-        ],
-        "description": "Object-Relational-Mapper for PHP",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "orm"
+            "artisan",
+            "generators",
+            "laravel",
+            "routing"
         ]
     },
     {
@@ -2226,40 +1720,34 @@
         "source": {
             "type": "git",
             "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
-            "reference": "4ea566b731fed9d4aa11713ed6f0d6894da01415"
+            "reference": "b1e4bd0bdec7524635c45a7d6e37254102233ef5"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/4ea566b731fed9d4aa11713ed6f0d6894da01415",
-            "reference": "4ea566b731fed9d4aa11713ed6f0d6894da01415",
+            "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/b1e4bd0bdec7524635c45a7d6e37254102233ef5",
+            "reference": "b1e4bd0bdec7524635c45a7d6e37254102233ef5",
             "shasum": ""
         },
         "require": {
-            "doctrine/orm": "2.4.*",
-            "mustache/mustache": "2.4.*",
-            "php": ">=5.3.0"
+            "illuminate/support": "4.1.*",
+            "php": ">=5.4.0"
         },
         "require-dev": {
-            "illuminate/console": "~4",
-            "illuminate/filesystem": "~4",
-            "illuminate/support": "~4",
-            "mockery/mockery": "0.8.*"
+            "behat/behat": "v2.5.1",
+            "behat/mink": "v1.5.0",
+            "behat/mink-extension": "*",
+            "behat/mink-goutte-driver": "*",
+            "behat/mink-selenium2-driver": "*",
+            "phpspec/phpspec": "2.0.*@dev",
+            "phpunit/phpunit": "3.*"
         },
-        "time": "2014-02-25 07:47:07",
+        "time": "2014-03-05 16:03:35",
         "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0-dev"
-            }
-        },
         "installation-source": "dist",
         "autoload": {
             "psr-0": {
                 "Way\\Generators": "src/"
-            },
-            "classmap": [
-                "src/Way/Generators/Generators"
-            ]
+            }
         },
         "notification-url": "https://packagist.org/downloads/",
         "authors": [
@@ -2269,12 +1757,6 @@
                 "homepage": "http://jeffrye-way.com",
                 "role": "Developer"
             }
-        ],
-        "description": "Laravel 4 Generators",
-        "keywords": [
-            "artisan",
-            "generators",
-            "laravel"
         ]
     }
 ]

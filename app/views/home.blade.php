@@ -4,6 +4,7 @@
 <!-- Landing home page for non-registered users -->
 <div class="jumbotron">
   <div class="container">
+    
     <h2>Discover and share your favorite movies here.</h2><br>
     <p>{{ HTML::link('register', 'Join today', array('class' => 'btn btn-primary btn-lg btn-embossed')) }}</p>
     <p>&nbsp</p>

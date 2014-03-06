@@ -9,7 +9,10 @@ class RegisterController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('user.register');
+		if(Auth::check()){
+			return View::make('explore');
+		}else
+        	return View::make('user.register');
 	}
 
 	/**

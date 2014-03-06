@@ -9,7 +9,21 @@ class SessionsController extends BaseController {
 	 */
 	public function create()
 	{
-        return View::make('user.login');
+
+		//Session::put('pre_login_url', URL::previous());
+
+		/*
+		$previousURL = URL::previous();
+		if($previousURL == URL::route('register') || URL::route('home')){
+			Session::put('pre_login_url', URL::route('explore'));
+		}else
+		{
+			Session::put('pre_login_url', $previousURL);
+		} */
+		//if(Auth::check()){
+			//return View::make('explore');
+		//}else
+        	return View::make('user.login');
 	}
 
 	/**
@@ -20,6 +34,8 @@ class SessionsController extends BaseController {
 	public function store()
 	{
 		//validate
+		//$url = Session::get('pre_login_url');
+		//Session::forget('pre_login_url');
 
 		$input = Input::all();
 
@@ -28,7 +44,10 @@ class SessionsController extends BaseController {
 			'password' => $input['password'],
 		]);
 
-		if ($attempt) return Redirect::intended('explore')->with('flash_message', 'Successfully logged in!');
+		if ($attempt) {
+			return Redirect::to('explore')->with('flash_message', 'Successfully logged in!')
+				->with('flash_type', 'alert-success');
+			}
 
 		return Redirect::back()->with('flash_message', 'Invalid Credentials')->withInput();
 
@@ -44,7 +63,7 @@ class SessionsController extends BaseController {
 	{
 		Auth::logout();
 
-		return Redirect::home()->with('flash_message', 'You have been logged out.');
+		return Redirect::to('explore')->with('flash_message', 'You have been logged out.');
 	}
 
 }

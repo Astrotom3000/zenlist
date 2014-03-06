@@ -3,70 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>zenlist</title>
-	<link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">
-  <link rel="stylesheet" href="{{ URL::asset('assets/css/simplepajinate.css') }}">
+	<!--<link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">-->
+  <link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">
+  <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css" />
+  <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css" />
+  <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css" />
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link rel="icon" type="ico" href="{{ URL::asset('assets/img/favicon.ico') }}">
-  <style>
-.pajinate {
-  display: inline-block;
-  padding-left: 0;
-  margin-top: 24px;
-  border-radius: 4px;
-}
-.pajinate > a,
-.pajinate > span {
-  position: relative;
-  float: left;
-  padding: 6px 12px;
-  line-height: 1.428571429;
-  text-decoration: none;
-  color: #6dbc63;
-  background-color: #ffffff;
-  border: 1px solid #dddddd;
-  margin-left: -1px;
-}
-.pajinate:first-child > a,
-.pajinate:first-child > span {
-  margin-left: 0;
-  border-bottom-left-radius: 4px;
-  border-top-left-radius: 4px;
-}
-.pajinate:last-child > a,
-.pajinate:last-child > span {
-  border-bottom-right-radius: 4px;
-  border-top-right-radius: 4px;
-}
-.pajinate > a:hover,
-.pajinate > span:hover,
-.pajinate > a:focus,
-.pajinate > span:focus {
-  color: #49933f;
-  background-color: #eeeeee;
-  border-color: #dddddd;
-}
-.pajinate > .active > a,
-.pajinate > .active > span,
-.pajinate > .active > a:hover,
-.pajinate > .active > span:hover,
-.pajinate > .active > a:focus,
-.pajinate > .active > span:focus {
-  z-index: 2;
-  color: #ffffff;
-  background-color: #6dbc63;
-  border-color: #6dbc63;
-  cursor: default;
-}
-.pajinate > .disabled > span,
-.pajinate > .disabled > span:hover,
-.pajinate > .disabled > span:focus,
-.pajinate > .disabled > a,
-.pajinate > .disabled > a:hover,
-.pajinate > .disabled > a:focus {
-  color: #999999;
-  background-color: #ffffff;
-  border-color: #dddddd;
-  cursor: not-allowed;
-}</style>
+
 </head>
 <body>
 <section id="navigation">
@@ -132,7 +76,20 @@
 <script src="{{ URL::asset('assets/js/typeahead.bundle.js') }}"></script>
 <script src="{{ URL::asset('assets/js/handlebars.js') }}"></script>
 <script src="{{ URL::asset('assets/js/autosearch.js') }}"></script>
-<script src="{{ URL::asset('assets/js/jquery.pajinate.js') }}"></script>
+<script data-require="fancybox@2.1.5" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+<script data-require="fancybox@2.1.5" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>
+<script data-require="fancybox@*" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
+<script data-require="fancybox@*" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js"></script>
+<script>
+  $('div.flash-message').delay(2000).slideUp();
+ $('div.form-error').delay(4000).slideUp();
+</script>
+<!--Local fancybox
+<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox.js') }}"></script>
+<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox-buttons.js') }}"></script>
+<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox-thumbs.js') }}"></script>
+<script src="{{ URL::asset('assets/js/fancybox/jquery.easing-1.3.pack.js') }}"></script>
+<script src="{{ URL::asset('assets/js/fancybox/jquery.mousewheel-3.0.6.pack.js') }}"></script> -->
 <!--Load custom scripts after base-->
 @yield('scripts')
 

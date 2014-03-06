@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Fedeisas\\LaravelJsRoutes\\' => array($vendorDir . '/fedeisas/laravel-js-routes/src'),
 );
