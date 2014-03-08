@@ -9,21 +9,21 @@ class SessionsController extends BaseController {
 	 */
 	public function create()
 	{
-
-		//Session::put('pre_login_url', URL::previous());
-
-		/*
+		
 		$previousURL = URL::previous();
-		if($previousURL == URL::route('register') || URL::route('home')){
+		if($previousURL == URL::route('registration') || $previousURL == URL::route('home')){
 			Session::put('pre_login_url', URL::route('explore'));
 		}else
 		{
 			Session::put('pre_login_url', $previousURL);
-		} */
-		//if(Auth::check()){
-			//return View::make('explore');
-		//}else
+		} 
+
+		if(Auth::check()){
+			
+			return Redirect::to('explore');
+		}
         	return View::make('user.login');
+
 	}
 
 	/**
@@ -34,8 +34,8 @@ class SessionsController extends BaseController {
 	public function store()
 	{
 		//validate
-		//$url = Session::get('pre_login_url');
-		//Session::forget('pre_login_url');
+		$url = Session::get('pre_login_url');
+		Session::forget('pre_login_url');
 
 		$input = Input::all();
 
@@ -45,8 +45,9 @@ class SessionsController extends BaseController {
 		]);
 
 		if ($attempt) {
-			return Redirect::to('explore')->with('flash_message', 'Successfully logged in!')
-				->with('flash_type', 'alert-success');
+			$userid = Auth::user()->id;
+			return Redirect::to($url)->with('flash_message', 'Successfully logged in!')
+				->with('flash_type', 'alert-success')->with('user_id', $userid);
 			}
 
 		return Redirect::back()->with('flash_message', 'Invalid Credentials')->withInput();

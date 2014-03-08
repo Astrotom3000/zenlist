@@ -49,4 +49,9 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->email;
 	}
 
+	public function favorites()
+	{
+		return $this->belongsToMany('Movie', 'favorites')->withTimestamps();
+	}
+
 }

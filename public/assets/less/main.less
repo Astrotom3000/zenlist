@@ -9,6 +9,14 @@
   top:85px;
 }
 
+
+.fav-button { 
+    border: none;
+    color: @warmth;
+  }
+
+.fav-button:hover { color: white; }
+
 /* Headers */
 .navbar-brand{
   padding: 0;
@@ -48,7 +56,8 @@
 /* Movie display */
 
 .movie-header{
-  padding-top: 0px;
+  //padding-top: 0px;
+  padding-right: 25px;
   text-align: center;
     .year{
     font-size: 30px;
@@ -82,7 +91,8 @@
     padding-bottom: 100px;
 }
 #mainCol{
-  padding-top: 20px;
+  padding-top: 30px;
+  margin-left: -2.5%;
   //padding-right: 10%;
   //padding-left: 27px;
   .tagline{
@@ -98,7 +108,7 @@
     padding: 14px 10px;
   }
   	#cast{
-  		padding-top: 50px;
+  		padding-top: 40px;
   	}
 
   	.cast-box{
@@ -107,20 +117,20 @@
 
 }
 #leftCol{
-      padding-top: 15px;
+      padding-top: 20px;
       @media(min-width: 1366px){
       .poster{
         padding-bottom: 10px;
-        margin-left: 20%;
+        margin-left: 10%;
       }
       .sideInfo{
-        margin-left: 20%;
+        margin-left: 10%;
         h4{
           margin-bottom: 5px;
         }
       }
       .ratings{
-         margin-left: 20%;
+        margin-left: 10%;
         text-align: left;
         padding-bottom: 20px;
         .overlay{

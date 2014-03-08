@@ -10,7 +10,7 @@ class RegisterController extends BaseController {
 	public function create()
 	{
 		if(Auth::check()){
-			return View::make('explore');
+			return Redirect::to('explore');
 		}else
         	return View::make('user.register');
 	}
@@ -22,6 +22,7 @@ class RegisterController extends BaseController {
 	 */
 	public function store()
 	{
+	
 		$input = Input::all();
 
 		$rules = array(

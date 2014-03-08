@@ -3,15 +3,54 @@
 @section('content')
 <div class="content">
 <div class="container .movie-container">
-<form action="">
-<input type="hidden" id="tmdb_id" value="{{$id}}">
-<input type="hidden" id="custom_tomato" value="{{ URL::asset('assets/img/customTomato.png') }}">
-</form>
 <div class="flash-message alert alert-warning" style="display:none;"><h4> Please log in to do that :)</h4></div>
-    <div id="preloader"><img src="{{ URL::asset('assets/img/loader.gif') }}" alt=
-"AJAX loader" title="AJAX loader" /></div>
-    <div class="movie-header"><h2 class="title"><span class="year"></span></h2> 
-    </div>
+
+    <div id="preloader"><img src="{{ URL::asset('assets/img/loader.gif') }}" alt="AJAX loader" title="AJAX loader" /></div>
+    <div class="movie-header" style="display:none;"><h2 class="title"><span class="year"></span></h2> 
+<input type="hidden" id="isLoggedIn" value='{{$is_logged_in}}' />
+
+<!--Favorites form-->
+@if(Auth::check())
+  @if ($favorited = in_array($movie->id, $favorites_auth))
+     {{ Form::open(['method' => 'DELETE', 'route' => 'favorites.destroy', 'id'=>'favForm']) }}
+     {{ Form::hidden('movie-id', $tmdbid) }}
+
+  @else
+    {{ Form::open(['route' => 'favorites.store', 'id'=>'favForm']) }}
+    {{ Form::hidden('movie-id', $tmdbid) }}
+
+  @endif
+    {{ Form::close() }}
+@endif
+          <ul class="nav nav-tabs">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-plus zengreen"></i> Add to </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#" class="watchList"><i class="glyphicon glyphicon-eye"></i> Watch List</a>
+                  </li>
+                <!--Favorites link -->
+                @if(Auth::check())
+                  <li><a href="javascript:void(0)" class="favorite"><i class="glyphicon {{ $favorited ? 'glyphicon-heart' : 'glyphicon-heart-empty' }}"></i>{{ $favorited ? ' Favorited' : ' Favorites' }} </a></li>
+                @else
+                  <li><a href="#" class="favorite"><i class="glyphicon glyphicon-heart-empty"></i>  Favorites</a></li>
+                @endif
+                </ul><!--Dropdown menu-->
+            <li> <!--Dropdown-->
+              <a href="#">Similar Movies</a>
+            <li>
+              <a href="#" id="related">Related Clips</a>
+            </li>
+            <li class="active">
+              <a href="#">About</a>
+            </li>
+          </ul><!--Nav-tabs-->
+    
+    </div> <!--End Header-->
+
+
+
 
 	<div class="col-md-4" id="leftCol">
       <div class="poster"></div>
@@ -47,13 +86,15 @@
 var api_key="ca85ff10880b1490989e8dbeb5932c00";
 var img_path = "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/";
 var tomato_key="pfwh96pvezces4nybpv7qf8f";
-var tomatoURL, imdb_id;
-var id = $('input#tmdb_id').val();
-var isloggedin = '{{ $loggedin }}';
-var cust_tomato = $('input#custom_tomato').val();
+var tomatoURL, imdb_id, rotten_id;
+var isLoggedIn;
+var id = '{{$tmdbid}}';
+var cust_tomato = "{{ URL::asset('assets/img/customTomato.png') }}";
 
 //initial TMDB movie data
 var title, titleURI, poster_path, mainPoster, release_date, tagline, overview, runtime;
+//strings we shall input into our own database of movies
+var titleStr, releasedateStr, trailerStr, genreStr, posterStr;
 var credits = [], posters=[], backdrops=[], trailers=[], languages=[];
 
 //variables we will store for RT data
@@ -61,7 +102,7 @@ var genres=[], reviews=[], year;
 var critics_rating, audience_rating;
 
 $(function(){
-  console.log(isloggedin);
+  isLoggedIn = $('input#isLoggedIn').val();
   //Begin asynchronous calls starting with TMDB!
   var movieURL="https://api.themoviedb.org/3/movie/"+id+'?api_key='+api_key+'&append_to_response=images,credits,trailers';
   $('#preloader').show();
@@ -70,11 +111,17 @@ $(function(){
   })
     .done(function( data ) {
       console.log('TMDB: ', data);
+      $('.movie-header').show();
       var imdb = data.imdb_id;
       imdb_id = imdb.replace(/tt/, "");
       //build local data
       title = data.title, release_date = data.release_date, tagline = data.tagline, overview = data.overview;
       genres = data.genres;
+      //stringify to pass to laravel
+      titleStr = JSON.stringify(title);
+      releasedateStr = JSON.stringify(release_date);
+      genreStr = JSON.stringify(genres);
+
       if(data.spoken_languages.length > 0){
         for(var k in data.spoken_languages)
           {
@@ -83,6 +130,7 @@ $(function(){
       }
       
       poster_path = data.poster_path;
+      posterStr = JSON.stringify(poster_path);
       runtime = data.runtime;
       credits = data.credits;
 
@@ -101,7 +149,7 @@ $(function(){
       }
 
       titleURI = encodeURIComponent(title);
-      tomatoURL="http://api.rottentomatoes.com/api/public/v1.0/movies.json?q="+titleURI+"&page_limit=1&page=1&apikey="+tomato_key;
+      tomatoURL="http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?id=" + imdb_id + "&type=imdb&apikey="+tomato_key;
       //next get youtube trailer
       getYoutubeTrailers(title);
   })
@@ -116,7 +164,8 @@ $(function(){
 function getYoutubeTrailers(title){
   var search_input = title + ' trailer';
   var keyword= encodeURIComponent(search_input); 
-  var yt_url='http://gdata.youtube.com/feeds/api/videos?q='+keyword+'&format=5&max-results=3&v=2&alt=jsonc'; 
+  var yt_url='http://gdata.youtube.com/feeds/api/videos?q='+keyword+'&format=5&max-results=1&v=2&alt=jsonc'; 
+  trailerStr = JSON.stringify(yt_url);
 
   $.ajax({
     type: "GET",
@@ -150,10 +199,10 @@ function getRottenTomatoes(rtURL){
   $.ajax({
     url: rtURL,
     dataType: 'jsonp',
-    success: function(data){
-      console.log('Rotten Tomatoes: ', data);
+    success: function(movie){
+      console.log('Rotten Tomatoes: ', movie);
+      rotten_id = movie.id;
       try{
-        var movie = data.movies[0];
         year = movie.year;
         if(movie.ratings)
               critics_rating = movie.ratings.critics_score, audience_rating = movie.ratings.audience_score;
@@ -167,21 +216,6 @@ function getRottenTomatoes(rtURL){
         }else{
           $('.movie-header .title').append(title);
         }
-
-        // Navigation for header
-        $('.movie-header').append(
-          '<ul class="nav nav-tabs">'+
-            '<li class="dropdown">'+
-            '<a class="dropdown-toggle" data-toggle="dropdown" href="#">'+
-            '<i class="fa fa-plus zengreen"></i> Add to </a>'+
-              '<ul class="dropdown-menu">'+
-              '<li><a href="#" class="addList"><i class="glyphicon glyphicon-eye-open"></i> Watch list</li></a>'+
-              '<li><a href="#" class="addList"><i class="glyphicon glyphicon-eye-close"></i> Seen list</li></a>'+
-              '<li><a href="#" id="favorite" class="addList"><i class="glyphicon glyphicon-heart-empty"></i> Favorites</li></a>'+
-              '<li><a href="#" class="addList"><i class="glyphicon glyphicon-list"></i> Custom List</li></a></ul></li>'+
-            '<li><a href="#">Similar Movies</a></li>'+
-            '<li><a href="#" id="related">Related Clips</a></li>'+
-            '<li class="active"><a href="#">About</a></li></ul>');
 
       //Add tagline and description
       if(tagline){
@@ -235,7 +269,7 @@ function getRottenTomatoes(rtURL){
       //if there are trailers, display them with fancybox attr
       try{
         if(trailers){
-          $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ trailers[0].yt_url +'">Trailer<br><i class="fa fa-youtube-play fa-3x"></i></a>');
+          $('#mainCol .description').append('<br><a class="fancybox-trailers fancybox.iframe" href="'+ trailers[0].yt_url +'">Trailer<br><i class="fa fa-youtube-play fa-3x"></i></a>');
           
           if(trailers.length>1){
             for(var j=1; j<trailers.length; j++){
@@ -295,7 +329,7 @@ function getRottenTomatoes(rtURL){
           }
         }
       }
-      
+
       //output directors
       if(directors.length > 0){
         $('#mainCol .crew').append('Directed by: ');
@@ -330,14 +364,14 @@ function getRottenTomatoes(rtURL){
       if(abridged_actors.length>0){
          $('#mainCol #cast #cast-header').append('Cast');
         for(abr in abridged_actors){
-          if(abr==0 || abr==2){
+          if(abr==0 || abr==3){
             $('#mainCol #cast #cast-col-1').append('<img src="'+img_path+'w92/'+abridged_actors[abr].profile_path+ '" height="122" width="82"/>'
               +'<p><a href="#">'+abridged_actors[abr].name+'</a> as <i>'+abridged_actors[abr].character+'</i></p>');
           }
           else if(abr==1 || abr==4)
             $('#mainCol #cast #cast-col-2').append('<img src="'+img_path+'w92/'+abridged_actors[abr].profile_path+ '" height="122" width="82"/>'
               +'<p><a href="#">'+abridged_actors[abr].name+'</a> as <i>'+abridged_actors[abr].character+'</i></p>');
-          else if(abr==3 || abr==5)
+          else if(abr==2 || abr==5)
             $('#mainCol #cast #cast-col-3').append('<img src="'+img_path+'w92/'+abridged_actors[abr].profile_path+ '" height="122" width="82"/>'
               +'<p><a href="#">'+abridged_actors[abr].name+'</a> as <i>'+abridged_actors[abr].character+'</i></p>');
         }
@@ -350,9 +384,22 @@ function getRottenTomatoes(rtURL){
         window.location = id+'/related';
       });
 
-      $("a.addList").click(function(){
-        if(isloggedin=='yes'){
-          window.location = id+'/related';
+      //add our hidden input fields for our backend to detect
+      $('#favForm').append('<input name="movie-title" type="hidden" value=' + titleStr + '>');
+      $('#favForm').append('<input name="rotten-id" type="hidden" value=' + rotten_id + '>');
+      $('#favForm').append('<input name="imdb-id" type="hidden" value=' + imdb_id + '>');
+      $('#favForm').append('<input name="year" type="hidden" value=' + year + '>');
+      $('#favForm').append('<input name="release-date" type="hidden" value=' + releasedateStr + '>');
+      $('#favForm').append('<input name="trailer" type="hidden" value=' + trailerStr + '>');
+      $('#favForm').append('<input name="genre" type="hidden" value=' + genreStr + '>');
+      $('#favForm').append('<input name="poster-path" type="hidden" value=' + posterStr + '>');
+      $('#favForm').append('<input name="critics-rating" type="hidden" value=' + critics_rating + '>');
+      $('#favForm').append('<input name="audience-rating" type="hidden" value=' + audience_rating + '>');
+      $('#favForm').append('<input name="runtime" type="hidden" value=' + runtime + '>');
+
+      $(document).on("click",".favorite",function() {
+        if(isLoggedIn=='yes'){
+           $('#favForm').submit();
         }else{
           $('.flash-message').slideDown().delay(3500).slideUp();
         }

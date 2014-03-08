@@ -28,13 +28,14 @@ var people = [];
 var thumbnailpath = "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w92";
 var noimg = "'none'";
 var movieFound=0, tvFound=0, peopleFound=0;
-var queryVal;
+var queryVal, queryStr = '';
 
 //Starts off the query to TMDB for movies
 $(function(){
   var tmdb_movies="http://api.themoviedb.org/3/search/movie?query=";
   queryVal = $('input#query').val();
-  var query = encodeURIComponent(queryVal.toString());
+  queryStr = queryVal.replace(/[_\W]+/g, " "); //nonword characters taken out
+  var query = encodeURIComponent(queryStr);
 
   //var queryURI = encodeURI(tmdb_movies+query+'&api_key='+api_key+'&page=1');
   $('#preloader').show();
@@ -48,6 +49,7 @@ $(function(){
       page: 1
     })
       .done(function( data ) {
+        console.log(data);
         $.each( data.results, function( i, movie ) {
           var year = ' ';
            if(movie.release_date){
@@ -156,8 +158,9 @@ function peopleSearch(query){
      resultsArray.sort(dynamicSort("popularity")); //sort movies and tv shows by popularity
 
       //Display the search results
-    if(resultsArray.length===0 && people.length===0){
-      $('.page-header').append('<h3>No results found for: <i>'+queryVal+'</i></h3>');
+      console.log(resultsArray);
+    if(resultsArray.length ===0 && people.length===0){
+      $('.page-header').append('<h3>No results found for: <i>'+queryStr+'</i></h3>');
     } else { 
       console.log(resultsArray);
       $('.page-header').append('<h3>Results found for: <i>'+queryVal+'</i></h3>');

@@ -17,6 +17,7 @@ var tvshows = new Bloodhound({
                   var year = tvshow.first_air_date.substr(0,4);
                   var yearParenths = '('+year+')';
                   return {
+                    id: tvshow.id,
                     title: tvshow.name,
                     poster: tvshow.poster_path,
                     year: yearParenths,
@@ -25,6 +26,7 @@ var tvshows = new Bloodhound({
               }
                 else{
                   return {
+                      id: tvshow.id,
                       title: tvshow.name,
                       poster: tvshow.poster_path,
                       year: ' ',
@@ -52,17 +54,21 @@ var movies = new Bloodhound({
                 var yearParenths = '('+year+')';
                 var thumbnail = thumbnailpath+movie.poster_path;
                 return {
+                    id: movie.id,
                     title: movie.original_title,
                     image: thumbnail,
                     year: yearParenths,
-                    popularity: popular.toFixed(2)
+                    popularity: popular.toFixed(2),
+                    type: 'film'
                 };
               }else{                  
                 return {
+                    id: movie.id,
                     title: movie.original_title,
                     image: thumbnail,
                     year: ' ',
-                    popularity: popular.toFixed(2)
+                    popularity: popular.toFixed(2),
+                    type: 'film'
                   };
                 }
             });
@@ -79,6 +85,7 @@ var people = new Bloodhound({
         filter: function (people) {
             return $.map(people.results, function (person) {
                 return {
+                    id: person.id,
                     name: person.name,
                     photo: person.profile_path
                 };
@@ -128,4 +135,9 @@ $('.auto-search .typeahead').typeahead({
       '<div class="query-box"><img src="'+thumbnailpath+'{{photo}}" onerror="this.style.display='+noimg+'" align="left"/>'+ '<span class="query-text">{{name}}</span></div>'
     )
   }
-});
+
+
+}) .on("typeahead:selected", function (event, data, dataset) {
+      if(data.type=='film')
+        window.location.href = "/movie/" + encodeURIComponent(data.id);
+    });

@@ -1610,18 +1610,66 @@
         ]
     },
     {
+        "name": "fzaninotto/faker",
+        "version": "v1.3.0",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fzaninotto/Faker.git",
+            "reference": "1d143fd8caf4d264602450bc01d7484af788706b"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fzaninotto/Faker/zipball/1d143fd8caf4d264602450bc01d7484af788706b",
+            "reference": "1d143fd8caf4d264602450bc01d7484af788706b",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "time": "2013-12-16 21:56:48",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.3.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Faker": "src/",
+                "Faker\\PHPUnit": "test/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "François Zaninotto"
+            }
+        ],
+        "description": "Faker is a PHP library that generates fake data for you.",
+        "keywords": [
+            "data",
+            "faker",
+            "fixtures"
+        ]
+    },
+    {
         "name": "way/generators",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
         "source": {
             "type": "git",
             "url": "https://github.com/JeffreyWay/Laravel-4-Generators.git",
-            "reference": "b1e4bd0bdec7524635c45a7d6e37254102233ef5"
+            "reference": "f0149677968893333b416afa48b6d5f804a7bc35"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/b1e4bd0bdec7524635c45a7d6e37254102233ef5",
-            "reference": "b1e4bd0bdec7524635c45a7d6e37254102233ef5",
+            "url": "https://api.github.com/repos/JeffreyWay/Laravel-4-Generators/zipball/f0149677968893333b416afa48b6d5f804a7bc35",
+            "reference": "f0149677968893333b416afa48b6d5f804a7bc35",
             "shasum": ""
         },
         "require": {
@@ -1637,7 +1685,7 @@
             "phpspec/phpspec": "2.0.*@dev",
             "phpunit/phpunit": "3.*"
         },
-        "time": "2014-03-05 16:03:35",
+        "time": "2014-03-06 14:37:24",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -1646,6 +1694,9 @@
             }
         },
         "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
         "authors": [
             {
                 "name": "Jeffrey Way",

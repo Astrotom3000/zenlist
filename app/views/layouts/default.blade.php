@@ -42,7 +42,13 @@
       <ul class="nav navbar-nav navbar-right pad-right">
       @if(Auth::check())
                   <li>{{ HTML::link('explore', 'Explore') }}</li>
-                  <li>{{ HTML::link('lists', 'My Lists') }}</li>
+                  <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-list"></i> My Lists</a>
+                    <ul class="dropdown-menu">
+                      <li><a href='#'>Watchlist</a></li>
+                      <li><a href="{{ route('user.favorites', Auth::user()->username) }}">Favorites</a></li>
+                    </ul>
+                  </li>
                   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>  {{ Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">

@@ -55,7 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'larazen',
+			'database'  => 'zenlist',
 			'username'  => 'root',
 			'password'  => 'zen',
 			'charset'   => 'utf8',
