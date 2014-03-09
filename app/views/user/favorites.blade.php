@@ -14,14 +14,17 @@
                     @foreach($moviesArr as $movie)
                     
                         <div class="col-md-4 col-md-offset-4 add-padding">
-                        <input type="hidden" id="tmdb" value ="{{$movie->tmdb_id}}">
-                       <h4><a href="#" id="movie">{{ $movie->title }} </a>({{$movie->year}}) </h4>
+                       <h4><a href="{{ route('movie', $movie->tmdb_id) }}" class="movie">{{ $movie->title }} </a>
+                       @if($movie->year)
+                          ({{$movie->year}}) 
+                       @endif
+                       </h4>
                         @if(Auth::check())
                           @if ($favorited = in_array($movie->tmdb_id, $favorites_auth))
-                             {{ Form::open(['method' => 'DELETE', 'route' => 'favorites.destroy', 'id'=>'favForm']) }}
+                             {{ Form::open(['method' => 'DELETE', 'route' => 'favorites.destroy', 'class'=>'favForm']) }}
                              {{ Form::hidden('movie-id', $movie->tmdb_id) }}
                           @else
-                            {{ Form::open(['route' => 'favorites.store', 'id'=>'favForm']) }}
+                            {{ Form::open(['route' => 'favorites.store', 'class'=>'favForm']) }}
                             {{ Form::hidden('movie-id', $movie->tmdb_id) }}
                         @endif
                           <div class="btn-group float-right">
@@ -32,9 +35,9 @@
                                 <li><a href="#" class="watchList"><i class="fa fa-eye"></i> Watch List</a></li>
                                  <!--Favorites link -->
                                     @if(Auth::check())
-                                    <li><a href="javascript:void(0)" class="favorite"><i class="glyphicon {{ $favorited ? 'glyphicon-heart' : 'glyphicon-heart-empty' }}"></i>{{ $favorited ? ' Favorited' : ' Favorites' }} </a></li>
+                                    <li><a href="#" id="addFav" onClick="addFav($(this)); return false;"><i class="glyphicon {{ $favorited ? 'glyphicon-heart' : 'glyphicon-heart-empty' }}"></i>{{ $favorited ? ' Favorited' : ' Favorites' }} </a></li>
                                     @else
-                                    <li><a href="#" class="favorite"><i class="glyphicon glyphicon-heart-empty"></i>  Favorites</a></li>
+                                    <li><a href="#" id="addFav" onClick="addFav($(this)); return false;"><i class="glyphicon glyphicon-heart-empty"></i>  Favorites</a></li>
                                     @endif
                               </ul>
                             </div>
@@ -57,21 +60,27 @@
 @section('scripts')
 <script>
 $(function(){
-    var tmdbID = $('input#tmdb').val();
     var isLoggedIn = "{{$is_logged_in}}";
 
-    $('a#movie').click(function(){
-        window.location = '/movie/'+ tmdbID;
-    });
-
+    $("form .favForm a").bind("click", function() {
+            var form = $(this).parent("form");
+            form.submit();
+      });
+/*
     $(document).on("click",".favorite",function() {
         if(isLoggedIn=='yes'){
-           $('#favForm').submit();
+          var form = $(this).parent();
+           form.submit();
         }else{
           $('.flash-message').slideDown().delay(3500).slideUp();
         }
-      });
+      }); */
 })
+
+function addFav(anchorElement) {
+    var form = anchorElement.parents("form");
+    form.submit();
+}  
 
 </script>
 @endsection

@@ -114,9 +114,11 @@ $(function(){
       $('.movie-header').show();
       var imdb = data.imdb_id;
       imdb_id = imdb.replace(/tt/, "");
+      
       //build local data
       title = data.title, release_date = data.release_date, tagline = data.tagline, overview = data.overview;
-      genres = data.genres;
+      genres = data.genres, year = release_date.substr(0,4);
+
       //stringify to pass to laravel
       titleStr = JSON.stringify(title);
       releasedateStr = JSON.stringify(release_date);
@@ -203,7 +205,7 @@ function getRottenTomatoes(rtURL){
       console.log('Rotten Tomatoes: ', movie);
       rotten_id = movie.id;
       try{
-        year = movie.year;
+        //year = movie.year;
         if(movie.ratings)
               critics_rating = movie.ratings.critics_score, audience_rating = movie.ratings.audience_score;
       }catch(e){
@@ -317,7 +319,7 @@ function getRottenTomatoes(rtURL){
         for(var c in credits.crew){
           if(credits.crew[c].department=='Directing')
             directors.push({'id':credits.crew[c].id, 'name': credits.crew[c].name, 'profile_path':credits.crew[c].profile_path});
-          if(credits.crew[c].department=='Writing')
+          if(credits.crew[c].job=='Writer')
             writers.push({'id':credits.crew[c].id, 'name': credits.crew[c].name, 'profile_path':credits.crew[c].profile_path, 'job':credits.crew[c].job});
         }
       }
@@ -344,18 +346,16 @@ function getRottenTomatoes(rtURL){
       }
 
       //output writers
-      if(writers.length >0){
-        var writerStr = '';
+     if(writers.length > 0){
+        $('#mainCol .crew').append('<br>Written by: ');
         for(var w in writers){
-          if(writers[w].job == 'Writer'){
-            if(w!=writers.length-1) //if it's not the last element, add a comma
-              writerStr += '<a href="#">'+writers[w].name+'</a>, ';
-            else
-              writerStr += '<a href="#">'+writers[w].name+'</a>';
-          }
-        } //end for each writer 
-        if(writerStr)
-          $('#mainCol .crew').append('<br>Written by: '+writerStr); //output final str of writers at the end
+          if(w!=writers.length-1)
+           {
+            $('#mainCol .crew').append('<a href="#">'+writers[d].name + '</a>, ');
+           }
+          else
+            $('#mainCol .crew').append('<a href="#">'+writers[d].name + '</a>'); //last elem
+        }
       }
 
       console.log(abridged_actors);

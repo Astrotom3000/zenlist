@@ -50,7 +50,7 @@ Route::resource('sessions', 'SessionsController', ['only' => ['index', 'create',
 Route::resource('search', 'SearchController', ['only' => ['store']]);
 
 //Movie Routes
-Route::get('movie/{id}/', function($id)
+Route::get('movie/{id}/', ['as' => 'movie', function($id)
 {	
 	$tmdbid = $id;
 	$favorites_auth = array();
@@ -65,7 +65,7 @@ Route::get('movie/{id}/', function($id)
 	}
 
 	return View::make('movie', compact('tmdbid', 'favorites_auth','is_logged_in'));
-});
+}]);
 
 Route::get('movie/{id}/related', function($id)
 {
@@ -110,8 +110,9 @@ Route::post('favorites', ['as' => 'favorites.store', function()
 {
 	//dd(Input::get('actors'));
     //see if that movie-id exists in our local database, if not create it
-    $movie = Movie::firstOrCreate(array(
-    	'title' => Input::get('movie-title'),
+    if($title = Input::get('movie-title')){
+    	 $movie = Movie::firstOrCreate(array(
+    	'title' => $title,
     	'tmdb_id' => Input::get('movie-id'),
     	'rottentomatoes_id' => Input::get('rotten-id'),
     	'imdb_id' => Input::get('imdb-id'),
@@ -123,6 +124,8 @@ Route::post('favorites', ['as' => 'favorites.store', function()
     	'audience_rating' => Input::get('audience-rating'),
     	'runtime' => Input::get('runtime')
     		));
+    }
+
 
     $movie_id = Input::get('movie-id');
 
