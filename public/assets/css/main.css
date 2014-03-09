@@ -5782,7 +5782,6 @@ button.close {
 }
 .fav-button {
   border: none;
-  color: #e74c3c;
 }
 .fav-button:hover {
   color: white;
@@ -5961,6 +5960,12 @@ button.close {
   color: #e74c3c;
 }
 /* Helpers */
+.float-right {
+  float: right;
+}
+.float-left {
+  float: left;
+}
 .align-center {
   text-align: center;
 }

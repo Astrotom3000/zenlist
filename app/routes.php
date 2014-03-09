@@ -58,13 +58,13 @@ Route::get('movie/{id}/', function($id)
 	if(Auth::check()) //get the authenticated users info to compare
 	{ 
 		$auth_userid = Auth::user()->id;
-		$favorites_auth = DB::table('favorites')->where('user_id', '=',  $auth_userid)->lists('tmdb_id'); //gets users favorite movies as array
+		$favorites_auth = DB::table('favorites')->where('user_id', '=',  $auth_userid)->lists('movie_id'); //gets users favorite movies as array
 		$is_logged_in = 'yes';
 	}else{
 		$is_logged_in = 'no';
 	}
 
-	return View::make('movie', compact('tmdbid', 'userid', 'favorites_auth', 'movie','is_logged_in'));
+	return View::make('movie', compact('tmdbid', 'favorites_auth','is_logged_in'));
 });
 
 Route::get('movie/{id}/related', function($id)
@@ -82,19 +82,27 @@ Route::get('users/{username}/favorites', ['as' => 'user.favorites', function ($u
 		return View::make('404error');
 	}
 	$user_name = $username;
+	$auth_username = '';
 	$favorites_auth = array();
 	if(Auth::check()) //get the authenticated users info to compare
 	{ 
 		$auth_userid = Auth::user()->id;
+		$auth_username = Auth::user()->username;
 		$favorites_auth = DB::table('favorites')->where('user_id', '=',  $auth_userid)->lists('movie_id');
 		$is_logged_in = 'yes';
 	}else{
 		$is_logged_in = 'no';
 	}
 
- 	$favorited_movies = DB::table('favorites')->where('user_id', '=',  $userid)->lists('movie_id'); //gets favorites of visited user
+	$favorited_movies = Favorite::where('user_id', '=', $userid)->get(); //gets favorited movies of visited user
+	$moviesArr = array();
+	foreach($favorited_movies as $movie){
+		$movieID = $movie->movie_id;
+		$newmovie = Movie::where('tmdb_id', '=', $movieID)->first();
+		array_push($moviesArr, $newmovie);
+	}
 
-    return View::make('user.favorites', compact('favorited_movies', 'favorites_auth', 'user_name'));
+    return View::make('user.favorites', compact('favorites_auth', 'auth_username', 'user_name', 'moviesArr', 'is_logged_in'));
 }]);
 
 //route for posting to favorites

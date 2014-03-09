@@ -11,7 +11,7 @@
 
 <!--Favorites form-->
 @if(Auth::check())
-  @if ($favorited = in_array($movie->id, $favorites_auth))
+  @if ($favorited = in_array($tmdbid, $favorites_auth))
      {{ Form::open(['method' => 'DELETE', 'route' => 'favorites.destroy', 'id'=>'favForm']) }}
      {{ Form::hidden('movie-id', $tmdbid) }}
 
