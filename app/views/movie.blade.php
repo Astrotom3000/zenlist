@@ -99,7 +99,7 @@ var id = '{{$tmdbid}}';
 var cust_tomato = "{{ URL::asset('assets/img/customTomato.png') }}";
 
 //initial TMDB movie data
-var title, titleURI, poster_path, mainPoster, release_date, tagline, overview, runtime;
+var original_title, title, titleURI, poster_path, mainPoster, release_date, tagline, overview, runtime;
 //strings we shall input into our own database of movies
 var titleStr, releasedateStr, trailerStr, genreStr, posterStr;
 var credits = [], posters=[], backdrops=[], trailers=[], languages=[];
@@ -123,6 +123,7 @@ $(function(){
       imdb_id = imdb.replace(/tt/, "");
       
       //build local data
+      original_title = data.original_title;
       title = data.title, release_date = data.release_date, tagline = data.tagline, overview = data.overview;
       genres = data.genres, year = release_date.substr(0,4);
 
@@ -311,13 +312,17 @@ function getRottenTomatoes(rtURL){
       }
       //Languages
       if(languages){
-        $('#leftCol .sideInfo').append('<b>Languages:</b> '); //genres header
+        $('#leftCol .sideInfo').append('<b>Languages:</b> ');
         for(var l in languages){
           if(l!=languages.length-1)
             $('#leftCol .sideInfo').append(languages[l] + ', ');
           else
-            $('#leftCol .sideInfo').append(languages[l]); //last elem
+            $('#leftCol .sideInfo').append(languages[l]); 
         }
+      }
+      //original title
+      if(original_title){
+        $('#leftCol .sideInfo').append('<h5><b>Original title:</b> '+original_title+' </h5>');
       }
 
       //Cast and crew
