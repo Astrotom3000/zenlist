@@ -24,7 +24,6 @@
       &:focus {
         text-decoration: none;
         background-color: @nav-link-hover-bg;
-        cursor: pointer;
       }
     }
 
@@ -47,8 +46,7 @@
     &,
     &:hover,
     &:focus {
-      background-color: #fff;//@nav-link-hover-bg;
-      color: #000;
+      background-color: @nav-link-hover-bg;
       border-color: @link-color;
     }
   }
@@ -76,7 +74,7 @@
 
 // Give the tabs something to sit on
 .nav-tabs {
-  background-color: @nav-tabs-active-link-hover-bg;
+  font-size: 25px;
   border-bottom: 1px solid @nav-tabs-border-color;
   > li {
     float: left;
@@ -85,15 +83,15 @@
 
     // Actual tabs (as links)
     > a {
-      font-weight: 400;
       color: @gray-light;
       margin-right: 2px;
       line-height: @line-height-base;
-      border-bottom: 2px solid transparent;
-      //border-radius: @border-radius-base @border-radius-base 0 0;
+      border: 1px solid transparent;
+      border-radius: @border-radius-base @border-radius-base 0 0;
       &:hover {
         color: #000;
-        border-bottom: 2px solid @brand-primary;
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        cursor: pointer;
       }
     }
 
@@ -102,10 +100,11 @@
       &,
       &:hover,
       &:focus {
-        color: @nav-tabs-active-link-hover-color;
+        color: @brand-primary; //@nav-tabs-active-link-hover-color;
         background-color: @nav-tabs-active-link-hover-bg;
-        border-bottom: 2px solid @brand-primary;
-        cursor: pointer;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+        cursor: default;
       }
     }
   }
@@ -150,6 +149,7 @@
     }
   }
 }
+
 
 
 // Pills
@@ -198,8 +198,8 @@
 // -------------------------
 
 .nav-justified {
-  font-size: 30px;
   width: 100%;
+
   > li {
     float: none;
      > a {
@@ -228,31 +228,29 @@
 //
 // Mixin for adding on top the shared `.nav-justified` styles for our tabs
 .nav-tabs-justified {
-  //border-bottom: 0;
-  //border-bottom: 1px solid transparent;
+  border-bottom: 0;
+
   > li > a {
     // Override margin from .nav-tabs
     margin-right: 0;
     border-radius: @border-radius-base;
-    // border-bottom: 2px solid transparent;
   }
 
   > .active > a,
   > .active > a:hover,
   > .active > a:focus {
-    border-bottom: 2px solid @brand-primary;
-    cursor: pointer;
+    border: 1px solid @brand-primary; //@nav-tabs-justified-link-border-color;
   }
 
   @media (min-width: @screen-sm-min) {
     > li > a {
-      //border-bottom: 1px solid transparent;
+      border-bottom: 1px solid @brand-primary; //@nav-tabs-justified-link-border-color;
       border-radius: @border-radius-base @border-radius-base 0 0;
     }
     > .active > a,
     > .active > a:hover,
     > .active > a:focus {
-      border-bottom: 2px solid @brand-primary;
+      border-bottom-color: @nav-tabs-justified-active-link-border-color;
     }
   }
 }

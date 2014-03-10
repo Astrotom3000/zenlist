@@ -3469,7 +3469,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #ffffff;
-  cursor: pointer;
 }
 .nav > li.disabled > a {
   color: #ffffff;
@@ -3484,8 +3483,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav .open > a,
 .nav .open > a:hover,
 .nav .open > a:focus {
-  background-color: #fff;
-  color: #000;
+  background-color: #ffffff;
   border-color: #6dbc63;
 }
 .nav .nav-divider {
@@ -3498,7 +3496,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
-  background-color: #ffffff;
+  font-size: 25px;
   border-bottom: 1px solid #eeeeee;
 }
 .nav-tabs > li {
@@ -3506,27 +3504,29 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
-  font-weight: 400;
   color: #737373;
   margin-right: 2px;
   line-height: 1.428571429;
-  border-bottom: 2px solid transparent;
+  border: 1px solid transparent;
+  border-radius: 4px 4px 0 0;
 }
 .nav-tabs > li > a:hover {
   color: #000;
-  border-bottom: 2px solid #6dbc63;
+  border-color: #6dbc63 #6dbc63 #eeeeee;
+  cursor: pointer;
 }
 .nav-tabs > li.active > a,
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
-  color: #000000;
+  color: #6dbc63;
   background-color: #ffffff;
-  border-bottom: 2px solid #6dbc63;
-  cursor: pointer;
+  border: 1px solid #6dbc63;
+  border-bottom-color: transparent;
+  cursor: default;
 }
 .nav-tabs.nav-justified {
-  font-size: 30px;
   width: 100%;
+  border-bottom: 0;
 }
 .nav-tabs.nav-justified > li {
   float: none;
@@ -3555,17 +3555,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified > .active > a,
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs.nav-justified > .active > a:focus {
-  border-bottom: 2px solid #6dbc63;
-  cursor: pointer;
+  border: 1px solid #6dbc63;
 }
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
+    border-bottom: 1px solid #6dbc63;
     border-radius: 4px 4px 0 0;
   }
   .nav-tabs.nav-justified > .active > a,
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom: 2px solid #6dbc63;
+    border-bottom-color: #ffffff;
   }
 }
 .nav-tabs2 {
@@ -3617,7 +3617,6 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: 0;
 }
 .nav-justified {
-  font-size: 30px;
   width: 100%;
 }
 .nav-justified > li {
@@ -3640,6 +3639,9 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     margin-bottom: 0;
   }
 }
+.nav-tabs-justified {
+  border-bottom: 0;
+}
 .nav-tabs-justified > li > a {
   margin-right: 0;
   border-radius: 4px;
@@ -3647,17 +3649,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a,
 .nav-tabs-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus {
-  border-bottom: 2px solid #6dbc63;
-  cursor: pointer;
+  border: 1px solid #6dbc63;
 }
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a {
+    border-bottom: 1px solid #6dbc63;
     border-radius: 4px 4px 0 0;
   }
   .nav-tabs-justified > .active > a,
   .nav-tabs-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus {
-    border-bottom: 2px solid #6dbc63;
+    border-bottom-color: #ffffff;
   }
 }
 .tab-content > .tab-pane {
@@ -5901,6 +5903,9 @@ ul {
 .content .flash-message {
   text-align: center;
 }
+.container {
+  padding-left: 0;
+}
 .exploreMain {
   padding: 0;
 }
@@ -5967,7 +5972,7 @@ ul {
 }
 #mainCol {
   padding-top: 25px;
-  padding-left: 60px;
+  padding-left: 50px;
 }
 #mainCol .tagline {
   margin-left: 0;
@@ -5987,6 +5992,7 @@ ul {
 }
 #leftCol {
   padding-top: 30px;
+  margin-left: 4em;
 }
 @media (min-width: 1366px) {
   #leftCol .poster {
