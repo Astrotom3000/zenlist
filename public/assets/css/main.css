@@ -2998,6 +2998,17 @@ input[type="button"].btn-block {
   outline: 0;
 }
 .dropdown-menu {
+  background: linear-gradient(to right, #ffffff 0, rgba(255, 255, 255, 0.75) 70%, rgba(255, 255, 255, 0.01) 100%);
+  background-image: linear-gradient(to right, #ffffff 0px, rgba(255, 255, 255, 0.85098) 70%, rgba(255, 255, 255, 0.00784314) 100%);
+  background-position-x: initial;
+  background-position-y: initial;
+  background-size: initial;
+  background-repeat-x: initial;
+  background-repeat-y: initial;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
   position: absolute;
   top: 100%;
   left: 0;
@@ -3009,7 +3020,6 @@ input[type="button"].btn-block {
   margin: 2px 0 0;
   list-style: none;
   font-size: 17px;
-  background-color: #ffffff;
   border: 1px solid #cccccc;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px;
@@ -3033,14 +3043,14 @@ input[type="button"].btn-block {
   clear: both;
   font-weight: normal;
   line-height: 1.428571429;
-  color: #333333;
+  color: #666;
   white-space: nowrap;
 }
 .dropdown-menu > li > a:hover,
 .dropdown-menu > li > a:focus {
   text-decoration: none;
-  color: white;
-  background-color: #f5f5f5;
+  color: #6dbc63;
+  background-color: transparent;
 }
 .dropdown-menu > li > a:hover .favorited,
 .dropdown-menu > li > a:focus .favorited {
@@ -3075,7 +3085,7 @@ input[type="button"].btn-block {
 }
 .dropdown-menu-right {
   left: auto;
-  right: 0;
+  right: 5;
 }
 .dropdown-menu-left {
   left: 0;
@@ -3115,7 +3125,7 @@ input[type="button"].btn-block {
 @media (min-width: 768px) {
   .navbar-right .dropdown-menu {
     left: auto;
-    right: 0;
+    right: 5;
   }
   .navbar-right .dropdown-menu-left {
     left: 0;
@@ -3459,6 +3469,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a:focus {
   text-decoration: none;
   background-color: #ffffff;
+  cursor: pointer;
 }
 .nav > li.disabled > a {
   color: #ffffff;
@@ -3487,10 +3498,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   max-width: none;
 }
 .nav-tabs {
+  background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
 }
 .nav-tabs > li {
-  float: right;
+  float: left;
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
@@ -3510,11 +3522,11 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #000000;
   background-color: #ffffff;
   border-bottom: 2px solid #6dbc63;
-  cursor: default;
+  cursor: pointer;
 }
 .nav-tabs.nav-justified {
-  width: 70%;
-  margin-left: 25%;
+  font-size: 30px;
+  width: 100%;
 }
 .nav-tabs.nav-justified > li {
   float: none;
@@ -3544,6 +3556,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs.nav-justified > .active > a:hover,
 .nav-tabs.nav-justified > .active > a:focus {
   border-bottom: 2px solid #6dbc63;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   .nav-tabs.nav-justified > li > a {
@@ -3554,6 +3567,32 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   .nav-tabs.nav-justified > .active > a:focus {
     border-bottom: 2px solid #6dbc63;
   }
+}
+.nav-tabs2 {
+  border-bottom: 1px solid #eeeeee;
+}
+.nav-tabs2 > li {
+  float: right;
+  margin-bottom: -1px;
+}
+.nav-tabs2 > li > a {
+  font-weight: 400;
+  color: #737373;
+  margin-right: 2px;
+  line-height: 1.428571429;
+  border-bottom: 2px solid transparent;
+}
+.nav-tabs2 > li > a:hover {
+  color: #000;
+  border-bottom: 2px solid #6dbc63;
+}
+.nav-tabs2 > li.active > a,
+.nav-tabs2 > li.active > a:hover,
+.nav-tabs2 > li.active > a:focus {
+  color: #000000;
+  background-color: #ffffff;
+  border-bottom: 2px solid #6dbc63;
+  cursor: pointer;
 }
 .nav-pills > li {
   float: left;
@@ -3578,8 +3617,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   margin-left: 0;
 }
 .nav-justified {
-  width: 70%;
-  margin-left: 25%;
+  font-size: 30px;
+  width: 100%;
 }
 .nav-justified > li {
   float: none;
@@ -3609,6 +3648,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs-justified > .active > a:hover,
 .nav-tabs-justified > .active > a:focus {
   border-bottom: 2px solid #6dbc63;
+  cursor: pointer;
 }
 @media (min-width: 768px) {
   .nav-tabs-justified > li > a {
@@ -3788,7 +3828,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     float: none;
     width: auto;
     margin-top: 0;
-    background-color: transparent;
+    background-color: white;
     border: 0;
     box-shadow: none;
   }
@@ -3956,7 +3996,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
   color: #555555;
-  background-color: #e7e7e7;
+  background-color: transparent;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -3969,7 +4009,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
+  background-color: transparent;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888888;
@@ -3981,8 +4021,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #e7e7e7;
-  color: #555555;
+  background-color: transparent;
+  color: #6dbc63;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
@@ -5775,6 +5815,60 @@ button.close {
     display: none !important;
   }
 }
+/* Icon moon */
+@font-face {
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot?-hiax3q');
+  src: url('../fonts/icomoon.eot?#iefix-hiax3q') format('embedded-opentype'), url('../fonts/icomoon.woff?-hiax3q') format('woff'), url('../fonts/icomoon.ttf?-hiax3q') format('truetype'), url('../fonts/icomoon.svg?-hiax3q#icomoon') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+[class^="icon-"],
+[class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+ul {
+  list-style: none;
+}
+.icon-user:before {
+  content: "\e600";
+}
+.icon-leaf:before {
+  content: "\e601";
+}
+.icon-eye:before {
+  content: "\e602";
+}
+.icon-eye-blocked:before {
+  content: "\e603";
+}
+.icon-heart:before {
+  content: "\e604";
+}
+.icon-heart2:before {
+  content: "\e605";
+}
+.icon-menu:before {
+  content: "\e606";
+}
+.icon-user2:before {
+  content: "\e607";
+}
+.icon-youtube:before {
+  content: "\e608";
+}
+.icon-youtube2:before {
+  content: "\e609";
+}
 .flash-message {
   position: absolute;
   left: 75%;
@@ -5806,6 +5900,30 @@ button.close {
 }
 .content .flash-message {
   text-align: center;
+}
+.exploreMain {
+  padding: 0;
+}
+.exploreMain img {
+  height: 250px;
+  width: 170px;
+}
+.exploreMain .movie-box {
+  padding-left: 0;
+  padding-bottom: 40px;
+}
+.favorites-box {
+  background-color: #f1f1f1;
+  padding-bottom: 50px;
+}
+.favorites-box img {
+  float: left;
+  width: 170px;
+  height: 250px;
+}
+.favorites-box .btn-group {
+  margin-top: .5em;
+  margin-left: 2em;
 }
 .results {
   margin-left: 27%;
@@ -5848,8 +5966,8 @@ button.close {
   padding-bottom: 100px;
 }
 #mainCol {
-  padding-top: 30px;
-  margin-left: -2.5%;
+  padding-top: 25px;
+  padding-left: 60px;
 }
 #mainCol .tagline {
   margin-left: 0;
@@ -5868,21 +5986,21 @@ button.close {
   padding-top: 15px;
 }
 #leftCol {
-  padding-top: 20px;
+  padding-top: 30px;
 }
 @media (min-width: 1366px) {
   #leftCol .poster {
     padding-bottom: 10px;
-    margin-left: 10%;
+    margin-left: 1%;
   }
   #leftCol .sideInfo {
-    margin-left: 10%;
+    margin-left: 5%;
   }
   #leftCol .sideInfo h4 {
     margin-bottom: 5px;
   }
   #leftCol .ratings {
-    margin-left: 10%;
+    margin-left: 5%;
     text-align: left;
     padding-bottom: 20px;
   }
@@ -5985,7 +6103,7 @@ button.close {
   padding-left: 40px;
 }
 .pad-right {
-  padding-right: 20px;
+  padding-right: 30px;
 }
 .highlight {
   color: #6dbc63;

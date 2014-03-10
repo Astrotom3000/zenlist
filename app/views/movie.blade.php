@@ -22,13 +22,16 @@
   @endif
     {{ Form::close() }}
 @endif
-          <ul class="nav nav-tabs">
+          <ul class="nav nav-tabs2">
             <li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              <i class="fa fa-plus zengreen"></i> Add to </a>
-                <ul class="dropdown-menu">
+              <i class="ion-plus zengreen"></i> Add to </a>
+                <ul class="dropdown-menu fallback">
                   <li>
-                    <a href="#" class="watchList"><i class="glyphicon glyphicon-eye"></i> Watch List</a>
+                    <a href="#" class="watchList"><i class="fa fa-eye"></i> Watch List</a>
+                  </li>
+                 <li>
+                    <a href="#" class="seenList"><i class="fa fa-eye-slash"></i> Seen List</a>
                   </li>
                 <!--Favorites link -->
                 @if(Auth::check())
@@ -36,6 +39,9 @@
                 @else
                   <li><a href="#" class="favorite"><i class="glyphicon glyphicon-heart-empty"></i>  Favorites</a></li>
                 @endif
+                <li>
+                    <a href="#" class="customList"><i class="ion-leaf"></i> Custom List</a>
+                  </li>
                 </ul><!--Dropdown menu-->
             <li> <!--Dropdown-->
               <a href="#">Similar Movies</a>
@@ -52,7 +58,7 @@
 
 
 
-	<div class="col-md-4" id="leftCol">
+	<div class="col-md-3" id="leftCol">
       <div class="poster"></div>
       <div class="ratings"></div>
       <div class="sideInfo"></div>
@@ -82,6 +88,7 @@
 
 @section('scripts')
 <script>
+
 //keys and paths
 var api_key="ca85ff10880b1490989e8dbeb5932c00";
 var img_path = "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/";
@@ -344,21 +351,20 @@ function getRottenTomatoes(rtURL){
             $('#mainCol .crew').append('<a href="#">'+directors[d].name + '</a>'); //last elem
         }
       }
-
       //output writers
      if(writers.length > 0){
         $('#mainCol .crew').append('<br>Written by: ');
         for(var w in writers){
           if(w!=writers.length-1)
            {
-            $('#mainCol .crew').append('<a href="#">'+writers[d].name + '</a>, ');
+            $('#mainCol .crew').append('<a href="#">'+writers[w].name + '</a>, ');
            }
           else
-            $('#mainCol .crew').append('<a href="#">'+writers[d].name + '</a>'); //last elem
+            $('#mainCol .crew').append('<a href="#">'+writers[w].name + '</a>'); //last elem
         }
       }
 
-      console.log(abridged_actors);
+      console.log(writers);
 
       //output cast
       if(abridged_actors.length>0){

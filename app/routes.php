@@ -95,6 +95,12 @@ Route::get('users/{username}/favorites', ['as' => 'user.favorites', function ($u
 	}
 
 	$favorited_movies = Favorite::where('user_id', '=', $userid)->get(); //gets favorited movies of visited user
+	$last_updated = DB::table('favorites')->where('user_id', '=', $userid) //query db to get last updated date
+								->orderBy('updated_at', 'desc')
+								->first();
+	
+	$last_updated_date = substr($last_updated->updated_at, 0, 10);
+	//dd($last_updated_date);
 	$moviesArr = array();
 	foreach($favorited_movies as $movie){
 		$movieID = $movie->movie_id;
@@ -102,13 +108,14 @@ Route::get('users/{username}/favorites', ['as' => 'user.favorites', function ($u
 		array_push($moviesArr, $newmovie);
 	}
 
-    return View::make('user.favorites', compact('favorites_auth', 'auth_username', 'user_name', 'moviesArr', 'is_logged_in'));
+	$baseURL = 'http://image.tmdb.org/t/p/w185';
+
+    return View::make('user.favorites', compact('baseURL', 'favorites_auth', 'auth_username', 'user_name', 'moviesArr', 'is_logged_in', 'last_updated_date'));
 }]);
 
 //route for posting to favorites
 Route::post('favorites', ['as' => 'favorites.store', function()
 {
-	//dd(Input::get('actors'));
     //see if that movie-id exists in our local database, if not create it
     if($title = Input::get('movie-title')){
     	 $movie = Movie::firstOrCreate(array(

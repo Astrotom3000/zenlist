@@ -9,10 +9,10 @@
   <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css" />
   <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css" />
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+  <link href="//code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
   <link rel="icon" type="ico" href="{{ URL::asset('assets/img/favicon.ico') }}">
-
 </head>
-<body>
+<body ng-app="zenlist">
 <section id="navigation">
 <!--Navigation-->
 <nav class="navbar navbar-default add-padding" role="navigation">
@@ -43,14 +43,18 @@
       @if(Auth::check())
                   <li>{{ HTML::link('explore', 'Explore') }}</li>
                   <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th-list"></i> My Lists</a>
-                    <ul class="dropdown-menu">
-                      <li><a href='#'>Watchlist</a></li>
-                      <li><a href="{{ route('user.favorites', Auth::user()->username) }}">Favorites</a></li>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icomoon icon-menu"></i>  My Lists</a>
+                    <ul class="dropdown-menu fallback">
+                      <li><a href='#'><i class="fa fa-eye"></i> Watchlist</a></li>
+                      <li><a href='#'><i class="fa fa-eye-slash"></i> Seenlist</a></li>
+                      <li><a href="{{ route('user.favorites', Auth::user()->username) }}"><i class="icomoon icon-heart"></i> Favorites</a></li>
+                      <li>
+                      <a href="#" class="customList"><i class="ion-leaf"></i> Custom List</a>
+                      </li>
                     </ul>
                   </li>
                   <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i>  {{ Auth::user()->username }} <b class="caret"></b></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icomoon icon-user"></i>  {{ Auth::user()->username }} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                       <li>{{ HTML::link('profile', 'Profile') }}</li>
                       <li class="divider"></li>
@@ -82,6 +86,12 @@
 <script src="{{ URL::asset('assets/js/typeahead.bundle.js') }}"></script>
 <script src="{{ URL::asset('assets/js/handlebars.js') }}"></script>
 <script src="{{ URL::asset('assets/js/autosearch.js') }}"></script>
+<script src="{{ URL::asset('assets/js/angular/angular.min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/angular/angular-ui.js') }}"></script>
+<script src="{{ URL::asset('js/app.js') }}"></script>
+<script src="{{ URL::asset('js/tmdbService.js') }}"></script>
+<script src="{{ URL::asset('js/moviesCtrl.js') }}"></script>
+
 <script data-require="fancybox@2.1.5" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
 <script data-require="fancybox@2.1.5" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>
 <script data-require="fancybox@*" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
@@ -89,14 +99,17 @@
 <script>
   $('div.flash-message').delay(2000).slideUp();
  $('div.form-error').delay(4000).slideUp();
+
+$('nav li ul').hide().removeClass('fallback');
+$('nav li').hover(
+    function () {
+        $('ul', this).show();
+    },
+    function () {
+        $('ul', this).hide();
+    }
+);
 </script>
-<!--Local fancybox
-<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox.js') }}"></script>
-<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox-buttons.js') }}"></script>
-<script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox-thumbs.js') }}"></script>
-<script src="{{ URL::asset('assets/js/fancybox/jquery.easing-1.3.pack.js') }}"></script>
-<script src="{{ URL::asset('assets/js/fancybox/jquery.mousewheel-3.0.6.pack.js') }}"></script> -->
-<!--Load custom scripts after base-->
 @yield('scripts')
 
 </body>

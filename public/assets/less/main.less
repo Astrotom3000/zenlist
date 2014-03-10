@@ -3,6 +3,68 @@
 /* import bootstrap */
 @import "bootstrap/bootstrap.less";
 
+/* Icon moon */
+@font-face {
+  font-family: 'icomoon';
+  src:url('../fonts/icomoon.eot?-hiax3q');
+  src:url('../fonts/icomoon.eot?#iefix-hiax3q') format('embedded-opentype'),
+    url('../fonts/icomoon.woff?-hiax3q') format('woff'),
+    url('../fonts/icomoon.ttf?-hiax3q') format('truetype'),
+    url('../fonts/icomoon.svg?-hiax3q#icomoon') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul{
+  list-style: none;
+}
+
+.icon-user:before {
+  content: "\e600";
+}
+.icon-leaf:before {
+  content: "\e601";
+}
+.icon-eye:before {
+  content: "\e602";
+}
+.icon-eye-blocked:before {
+  content: "\e603";
+}
+.icon-heart:before {
+  content: "\e604";
+}
+.icon-heart2:before {
+  content: "\e605";
+}
+.icon-menu:before {
+  content: "\e606";
+}
+.icon-user2:before {
+  content: "\e607";
+}
+.icon-youtube:before {
+  content: "\e608";
+}
+.icon-youtube2:before {
+  content: "\e609";
+}
+
+
 .flash-message{
   position: absolute;
   left:75%;
@@ -39,6 +101,36 @@
   padding-bottom: 150px;
   text-align: left;
 }
+
+.exploreMain{
+  padding: 0;
+  //background-color: #f1f1f1;
+  img{
+    height: 250px;
+    width: 170px;
+  }
+
+  .movie-box{
+
+    padding-left: 0;
+    padding-bottom: 40px;
+  }
+}
+
+.favorites-box{
+  background-color: #f1f1f1;
+  padding-bottom: 50px;
+  img{
+    float: left;
+    width: 170px;
+    height: 250px;
+  }
+  .btn-group{
+    margin-top: .5em;
+    margin-left: 2em;
+  }
+}
+
 
 .results{
     margin-left: 27%;
@@ -90,8 +182,9 @@
     padding-bottom: 100px;
 }
 #mainCol{
-  padding-top: 30px;
-  margin-left: -2.5%;
+  padding-top: 25px;
+  padding-left: 60px;
+  //margin-left: -3%;
   //padding-right: 10%;
   //padding-left: 27px;
   .tagline{
@@ -116,20 +209,20 @@
 
 }
 #leftCol{
-      padding-top: 20px;
+      padding-top: 30px;
       @media(min-width: 1366px){
       .poster{
         padding-bottom: 10px;
-        margin-left: 10%;
+        margin-left: 1%;
       }
       .sideInfo{
-        margin-left: 10%;
+        margin-left: 5%;
         h4{
           margin-bottom: 5px;
         }
       }
       .ratings{
-        margin-left: 10%;
+        margin-left: 5%;
         text-align: left;
         padding-bottom: 20px;
         .overlay{
@@ -243,7 +336,7 @@
   padding-left: 40px;
 }
 .pad-right{
-  padding-right: 20px;
+  padding-right: 30px;
 }
 .highlight{
   color: @brand-primary;
@@ -347,3 +440,4 @@
 .tt-suggestion p {
   margin: 0;
 }
+
