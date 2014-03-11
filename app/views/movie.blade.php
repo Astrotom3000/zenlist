@@ -5,7 +5,7 @@
 <div class="container .movie-container">
 <div class="flash-message alert alert-warning" style="display:none;"><h4> Please log in to do that :)</h4></div>
 
-    <div id="preloader"><img src="{{ URL::asset('assets/img/loader.gif') }}" alt="AJAX loader" title="AJAX loader" /></div>
+    <div id="preloader"><img src="{{ URL::asset('assets/img/zenloader.gif') }}" alt="AJAX loader" title="AJAX loader" /></div>
     <div class="movie-header" style="display:none;"><h2 class="title"><span class="year"></span></h2> 
 <input type="hidden" id="isLoggedIn" value='{{$is_logged_in}}' />
 
@@ -324,12 +324,12 @@ function getRottenTomatoes(rtURL){
 
 
       //if there are youtube trailers, display them with fancybox attr
-      if(yt_trailers){
+      if(yt_trailers.length>0){
         var yt_url = 'http://www.youtube.com/v/'+yt_trailers[0]+'?fs=1&amp;autoplay=1;iv_load_policy=3';
           $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ yt_url +'">Trailer<br><i class="fa fa-youtube-play fa-3x"></i></a>');
           
-          if(trailers.length>1){
-            for(var j=1; j<trailers.length; j++){
+          if(yt_trailers.length>1){
+            for(var j=1; j<yt_trailers.length; j++){
                 var yt_url = 'http://www.youtube.com/v/'+yt_trailers[j]+'?fs=1&amp;autoplay=1;iv_load_policy=3';
                 $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ yt_url +'"></a>');
             }          

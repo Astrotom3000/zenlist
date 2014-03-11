@@ -1,5 +1,5 @@
 <div class="content" ng-controller="MoviesCtrl">
-<div class="container">
+<div class="container explore-container"><br>
 	<div class="col-md-3"><br><input ng-model="query" placeholder=" Search ">
 	 <h4>Sort by:</h4>
 	  <select ng-model="orderProp">
@@ -13,7 +13,7 @@
 	  </select>
 	</div>
 	<div class="col-md-9 exploreMain">
-		<tabset justified="true">
+		<tabset>
 		    <tab heading="In Theaters">
 			    <br>
 			    <div class="col-md-4 movie-box" ng-repeat="movie in nowplaying | filter:query | orderBy:orderProp">
@@ -21,8 +21,6 @@
 					    {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
 					     Vote average: {{movie.vote_average}}<br>
-						<span ng-if="{{movie.revenue}} > 0">
-					     Revenue: {{movie.revenue}}</span><br>
 
 				</div>
 			</tab>
@@ -33,8 +31,6 @@
 					     {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
 					     Vote average: {{movie.vote_average}}<br>
-					     <span ng-if="{{movie.revenue}} > 0">
-					     Revenue: {{movie.revenue}}</span><br>
 				</div>
 		    </tab>
 		    <tab heading="Popular">	

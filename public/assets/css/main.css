@@ -3495,24 +3495,68 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav > li > a > img {
   max-width: none;
 }
+/* Give the tabs something to sit on
+.nav-tabs {
+  font-size: 25px;
+  border-bottom: 1px solid @nav-tabs-border-color;
+  > li {
+    float: left;
+    // Make the list-items overlay the bottom border
+    margin-bottom: -1px;
+
+    // Actual tabs (as links)
+    > a {
+      color: @gray-light;
+      margin-right: 2px;
+      line-height: @line-height-base;
+      border: 1px solid transparent;
+      border-radius: @border-radius-base @border-radius-base 0 0;
+      &:hover {
+        color: #000;
+        border-color: @nav-tabs-link-hover-border-color @nav-tabs-link-hover-border-color @nav-tabs-border-color;
+        cursor: pointer;
+      }
+    }
+
+    // Active state, and its :hover to override normal :hover
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        color: @brand-primary; //@nav-tabs-active-link-hover-color;
+        background-color: @nav-tabs-active-link-hover-bg;
+        border: 1px solid @nav-tabs-active-link-hover-border-color;
+        border-bottom-color: transparent;
+        cursor: default;
+      }
+    }
+  }
+  // pulling this in mainly for less shorthand
+  &.nav-justified {
+    .nav-justified();
+    .nav-tabs-justified();
+  }
+}
+*/
 .nav-tabs {
   font-size: 25px;
   border-bottom: 1px solid #eeeeee;
 }
 .nav-tabs > li {
   float: left;
+  margin-right: 1em;
   margin-bottom: -1px;
 }
 .nav-tabs > li > a {
+  font-weight: 400;
   color: #737373;
   margin-right: 2px;
   line-height: 1.428571429;
-  border: 1px solid transparent;
-  border-radius: 5px 5px 0 0;
+  border-bottom: 2px solid transparent;
 }
 .nav-tabs > li > a:hover {
-  color: #000;
-  border-color: #6dbc63 #6dbc63 #eeeeee;
+  color: #6dbc63;
+  border-bottom: 3px solid #6dbc63;
   cursor: pointer;
 }
 .nav-tabs > li.active > a,
@@ -3520,53 +3564,8 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .nav-tabs > li.active > a:focus {
   color: #6dbc63;
   background-color: #ffffff;
-  border: 1px solid #6dbc63;
-  border-bottom-color: transparent;
-  cursor: default;
-}
-.nav-tabs.nav-justified {
-  width: 100%;
-  border-bottom: 0;
-}
-.nav-tabs.nav-justified > li {
-  float: none;
-}
-.nav-tabs.nav-justified > li > a {
-  text-align: center;
-  margin-bottom: 5px;
-}
-.nav-tabs.nav-justified > .dropdown .dropdown-menu {
-  top: auto;
-  left: auto;
-}
-@media (min-width: 768px) {
-  .nav-tabs.nav-justified > li {
-    display: table-cell;
-    width: 1%;
-  }
-  .nav-tabs.nav-justified > li > a {
-    margin-bottom: 0;
-  }
-}
-.nav-tabs.nav-justified > li > a {
-  margin-right: 0;
-  border-radius: 5px;
-}
-.nav-tabs.nav-justified > .active > a,
-.nav-tabs.nav-justified > .active > a:hover,
-.nav-tabs.nav-justified > .active > a:focus {
-  border: 1px solid #6dbc63;
-}
-@media (min-width: 768px) {
-  .nav-tabs.nav-justified > li > a {
-    border-bottom: 1px solid #6dbc63;
-    border-radius: 5px 5px 0 0;
-  }
-  .nav-tabs.nav-justified > .active > a,
-  .nav-tabs.nav-justified > .active > a:hover,
-  .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #ffffff;
-  }
+  border-bottom: 3px solid #6dbc63;
+  cursor: pointer;
 }
 .nav-tabs2 {
   border-bottom: 1px solid #eeeeee;
@@ -5916,6 +5915,9 @@ ul {
 .container {
   padding-left: 0;
 }
+.explore-container {
+  padding: 0;
+}
 .exploreMain {
   padding: 0;
 }
@@ -6036,8 +6038,8 @@ ul {
   display: none;
 }
 #preloader img {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
 }
 /* Login/Registration form */
 .input-form {

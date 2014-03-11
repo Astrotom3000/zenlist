@@ -69,7 +69,6 @@
                   </li>
                   </ul>
               @else
-                  <li>{{ HTML::link('/', 'Home') }}</li>
                   <li>{{ HTML::link('explore', 'Explore') }}</li>
                   <li>{{ HTML::link('home', 'About') }}</li>
                   <li>{{ HTML::link('register', 'Register') }}</li>
