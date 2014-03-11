@@ -56,11 +56,11 @@ $(function(){
              var yeardate = movie.release_date.substr(0,4);
              year = '('+yeardate+')';
            }
-          resultsArray.push({'id': movie.id, 'title' : movie.original_title, 'year':year, 
+          resultsArray.push({'id': movie.id, 'title' : movie.title, 'year':year, 
                             'popularity':movie.popularity, 'type':'movie','poster_path':movie.poster_path,
                             'directors':[], 'starring':[]});
           movieCreditsSearch(i, movie.id); //adds director and starring actors to the results
-          if ( i === 4 ) {
+          if ( i === 8 ) {
             return false;
           }
         });
@@ -112,7 +112,7 @@ function TVsearch(query){
          }else{
             resultsArray.push({'id': show.id, 'title' : show.name, 'year': ' ',
                           'popularity':show.popularity, 'type':'show','poster_path':show.poster_path, 'starring':[] }); }
-        if ( i === 4 ) {
+        if ( i === 8 ) {
           return false;
         }
       });

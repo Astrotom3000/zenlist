@@ -6,9 +6,11 @@
   <link rel="stylesheet" href="{{ URL::asset('assets/css/main.css') }}">
   <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
   <link href="//code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet">
+  <link href="{{ URL::asset('assets/js/flexslider/flexslider.css') }}" rel="stylesheet">
   <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.css" />
   <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.css" />
   <link data-require="fancybox@2.1.5" data-semver="2.1.5" rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-buttons.css" />
+
   <!--
   <link href="{{ URL::asset('assets/js/fancybox/jquery.fancybox.css') }}" rel="stylesheet">
   <link href="{{ URL::asset('assets/js/fancybox/helpers/jquery.fancybox-buttons.css') }}" rel="stylesheet">
@@ -101,6 +103,9 @@
 <script data-require="fancybox@2.1.5" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.js"></script>
 <script data-require="fancybox@*" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-thumbs.js"></script>
 <script data-require="fancybox@*" data-semver="2.1.5" src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/helpers/jquery.fancybox-media.js"></script>
+<script src="{{ URL::asset('assets/js/flexslider/jquery.flexslider-min.js') }}"></script>
+<script src="{{ URL::asset('assets/js/flexslider/jquery.mousewheel.js') }}"></script>
+<script src="{{ URL::asset('assets/js/flexslider/jquery.easing.js') }}"></script>
 
 <!--
 <script src="{{ URL::asset('assets/js/fancybox/jquery.fancybox.js') }}"></script>

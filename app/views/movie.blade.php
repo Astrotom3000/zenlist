@@ -83,7 +83,17 @@
       <div class="reviews"></div>
 		</div>
     </div><!--container-->
+    <div class="container">
+        <div class="col-md-8 col-md-offset-4">
+          <h3 class="flex-header"></h3>
+          <div class="flexslider">
+                <ul class="slides">
+                </ul>
+          </div>
+        </div>
+    </div>
 </div>
+
 @endsection
 
 @section('scripts')
@@ -99,10 +109,11 @@ var id = '{{$tmdbid}}';
 var cust_tomato = "{{ URL::asset('assets/img/customTomato.png') }}";
 
 //initial TMDB movie data
-var original_title, title, titleURI, poster_path, mainPoster, release_date, tagline, overview, runtime;
+var original_title, title, titleURI, poster_path, mainPoster, release_date, tagline, overview, runtime, trailer;
 //strings we shall input into our own database of movies
 var titleStr, releasedateStr, trailerStr, genreStr, posterStr;
 var credits = [], posters=[], backdrops=[], trailers=[], languages=[];
+var yt_trailers = [];
 
 //variables we will store for RT data
 var genres=[], reviews=[], year;
@@ -125,6 +136,7 @@ $(function(){
       //build local data
       original_title = data.original_title;
       title = data.title, release_date = data.release_date, tagline = data.tagline, overview = data.overview;
+      trailers = data.trailers;
       genres = data.genres, year = release_date.substr(0,4);
 
       //stringify to pass to laravel
@@ -151,7 +163,7 @@ $(function(){
         }
       }
 
-      for(var j=0; j<5; j++){
+      for(var j in data.images.backdrops){
         if(data.images.backdrops[j])
         {
           backdrops.push(data.images.backdrops[j]);
@@ -161,7 +173,17 @@ $(function(){
       titleURI = encodeURIComponent(title);
       tomatoURL="http://api.rottentomatoes.com/api/public/v1.0/movie_alias.json?id=" + imdb_id + "&type=imdb&apikey="+tomato_key;
       //next get youtube trailer
-      getYoutubeTrailers(title);
+      try{
+        for(var y in trailers.youtube){
+          yt_trailers.push(trailers.youtube[y].source);
+        }
+      }catch(e){
+        console.log('youtube trailers not found');
+      }
+
+      console.log('youtube trailers', yt_trailers);
+
+      getRottenTomatoes(tomatoURL);
   })
   .error(function() {
     $('#preloader').hide();
@@ -170,7 +192,7 @@ $(function(){
   
 })
 
-// Request Youtube API
+/* Request Youtube API
 function getYoutubeTrailers(title){
   var search_input = title + ' trailer';
   var keyword= encodeURIComponent(search_input); 
@@ -202,7 +224,7 @@ function getYoutubeTrailers(title){
       console.log('Error: ', e.message);
     }
   });
-}
+} */
 
 //Last request to Rotten Tomatoes, then build output
 function getRottenTomatoes(rtURL){
@@ -260,6 +282,16 @@ function getRottenTomatoes(rtURL){
         }
       }
 
+      //backdrop flexslider/fancybox
+      if(backdrops.length>0){
+        $('.flex-header').append('Backdrops');
+        for(var j in backdrops){
+            var backdrop = img_path+'w780/'+backdrops[j].file_path;
+            var backdrop_preview = img_path+'w300/'+backdrops[j].file_path;
+            $('.flexslider .slides').append(' <li><a class="fancybox-backdrops" rel="backdrops" href="'+backdrop+'"><img src="'+backdrop_preview+'"></a></li>  ');
+        }
+      }
+
     //fancybox for posters
     $(".fancybox-thumb")
         .attr('rel', 'gallery')
@@ -276,21 +308,34 @@ function getRottenTomatoes(rtURL){
             }
         });
 
-      //if there are trailers, display them with fancybox attr
-      try{
-        if(trailers){
-          $('#mainCol .description').append('<br><a class="fancybox-trailers fancybox.iframe" href="'+ trailers[0].yt_url +'">Trailer<br><i class="fa fa-youtube-play fa-3x"></i></a>');
+    //fancybox and carousel for backdrops
+    $(".fancybox-backdrops").fancybox({
+      padding : 7,
+      openEffect  : 'none',
+      closeEffect : 'none'
+    });
+
+  $('.flexslider').flexslider({
+    animation: "slide",
+    slideshow: false,
+    animationLoop: false,
+    itemWidth: 300,
+  });
+
+
+      //if there are youtube trailers, display them with fancybox attr
+      if(yt_trailers){
+        var yt_url = 'http://www.youtube.com/v/'+yt_trailers[0]+'?fs=1&amp;autoplay=1;iv_load_policy=3';
+          $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ yt_url +'">Trailer<br><i class="fa fa-youtube-play fa-3x"></i></a>');
           
           if(trailers.length>1){
             for(var j=1; j<trailers.length; j++){
-              $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ trailers[j].yt_url +'"></a>');
+                var yt_url = 'http://www.youtube.com/v/'+yt_trailers[j]+'?fs=1&amp;autoplay=1;iv_load_policy=3';
+                $('#mainCol .description').append('<a class="fancybox-trailers fancybox.iframe" href="'+ yt_url +'"></a>');
             }          
           }
-        }
-      }catch(e){
-        $('#preloader').hide();
-        console.log(e);
-      }
+        } 
+      trailerStr = JSON.stringify(yt_trailers);
 
       //Genres
       if(genres.length>0){

@@ -7,17 +7,23 @@
 	    <option value="-release_date">Newest</option>
 	    <option value="release_date">Oldest</option>
 	    <option value="-vote_average">Votes</option>
+	    <option value="-popularity">Popularity</option>
+	    <option value="-revenue">Revenue</option>
+	    
 	  </select>
 	</div>
 	<div class="col-md-9 exploreMain">
 		<tabset justified="true">
-		    <tab heading="Now Playing">
+		    <tab heading="In Theaters">
 			    <br>
 			    <div class="col-md-4 movie-box" ng-repeat="movie in nowplaying | filter:query | orderBy:orderProp">
 					    <a href="/movie/{{movie.id}}" ><img ng-src="{{baseURL}}/{{movie.poster_path}}"><br>
 					    {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
 					     Vote average: {{movie.vote_average}}<br>
+						<span ng-if="{{movie.revenue}} > 0">
+					     Revenue: {{movie.revenue}}</span><br>
+
 				</div>
 			</tab>
 		    <tab heading="Upcoming">
@@ -26,7 +32,9 @@
 					     <a href="/movie/{{movie.id}}" ><img ng-src="{{baseURL}}/{{movie.poster_path}}"><br>
 					     {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
-					     Vote average: {{movie.vote_average}}
+					     Vote average: {{movie.vote_average}}<br>
+					     <span ng-if="{{movie.revenue}} > 0">
+					     Revenue: {{movie.revenue}}</span><br>
 				</div>
 		    </tab>
 		    <tab heading="Popular">	
@@ -35,7 +43,8 @@
 					     <a href="/movie/{{movie.id}}" ><img ng-src="{{baseURL}}/{{movie.poster_path}}"><br>
 					     {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
-					     Vote average: {{movie.vote_average}}
+					     Vote average: {{movie.vote_average}}<br>
+				<span>{{movie.revenue ? 'Revenue: ' + convertToCurrency(movie.revenue) : ' '}}</span>
 				</div>
 				  </tab>
 		  </tabset>

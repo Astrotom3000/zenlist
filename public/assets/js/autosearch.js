@@ -55,7 +55,7 @@ var movies = new Bloodhound({
                 var thumbnail = thumbnailpath+movie.poster_path;
                 return {
                     id: movie.id,
-                    title: movie.original_title,
+                    title: movie.title,
                     image: thumbnail,
                     year: yearParenths,
                     popularity: popular.toFixed(2),
@@ -64,7 +64,7 @@ var movies = new Bloodhound({
               }else{                  
                 return {
                     id: movie.id,
-                    title: movie.original_title,
+                    title: movie.title,
                     image: thumbnail,
                     year: ' ',
                     popularity: popular.toFixed(2),

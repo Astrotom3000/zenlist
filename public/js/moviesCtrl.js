@@ -5,6 +5,7 @@ angular.module("zenlist")
       $scope.nowplaying = [];
       $scope.popular = [];
       $scope.upcoming = [];
+      //$scope.movies = {};
       
       var getTmdbPromise = tmdbService.getNowPlaying(apikey);
       var getTmdbPromise2 = tmdbService.getPopular(apikey);
@@ -12,12 +13,20 @@ angular.module("zenlist")
       
         //multiple async calls
       $q.all([getTmdbPromise, getTmdbPromise2, getTmdbPromise3]).then(function (response){
+          
           $scope.nowplaying = response[0];
           $scope.popular = response[1];
           $scope.upcoming = response[2];
+
+          //$log.log("Movies: ", $scope.movies);
           $log.log("Success: ", response);
         });
 
        $scope.orderProp = '-vote_average';
+
+       $scope.convertToCurrency = function(val){
+          var money = '$' + val.toLocaleString();
+          return money;
+       }
         
     });
