@@ -6,7 +6,7 @@
   <div class="container">
     
     <h2>Discover and share your favorite movies here.</h2><br>
-    <p>{{ HTML::link('register', 'Join today', array('class' => 'btn btn-primary btn-lg btn-embossed')) }}</p>
+    <p>{{ HTML::link('register', 'Join today', array('class' => 'btn btn-primary btn-lg btn-embossed')) }} or {{ HTML::link('explore', 'Start Browsing', array('class' => 'btn btn-lg btn-browse')) }}</p>
     <p>&nbsp</p>
   </div>
 </div>

@@ -5,7 +5,9 @@
     @include('layouts/partials/_flash_message')
         @if($auth_username == $user_name)
             <center><h1>Your Favorite Movies </h1>
+            @if($last_updated_date != ' ')
             <p>Last updated: {{$last_updated_date}}</p></center>
+            @endif
         @else
            <center><h1><span class="zengreen"> {{ucfirst($user_name)}}'s </span>Favorite Movies </h1>
            <p>Last updated: {{$last_updated_date}}</p></center>

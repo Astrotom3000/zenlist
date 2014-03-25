@@ -102,6 +102,29 @@ ul{
         background-size: cover;
         background-repeat:no-repeat;
         background-attachment: fixed;
+        p{
+          font-size: 18px;
+        }
+}
+
+.btn.btn-browse {
+  .box-sizing(border-box);
+  background: none;
+  margin-top: -1px;
+  margin-left: 5px;
+  border: 2px solid @warmth;
+  border-radius: 4px;
+  padding: 9px 12px;
+  color: @warmth;
+  &:hover, &:focus {
+    background: @warmth;
+    color: #fff;
+  }
+  &:active, &.active {
+    border-color: @warmth;
+    background: @warmth;
+    color: rgba(255, 255, 255, 0.75);
+  }
 }
 
 /* Content */
@@ -190,7 +213,7 @@ ul{
   }
 
   .percent{
-    font-size: 30px;
+    font-size: 25px;
     color: @brand-primary;
   }
 

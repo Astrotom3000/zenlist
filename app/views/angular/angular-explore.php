@@ -1,6 +1,6 @@
 <div class="content" ng-controller="MoviesCtrl">
 <div class="container explore-container"><br>
-	<div class="col-md-3"><br><input ng-model="query" placeholder=" Search ">
+	<div class="col-md-2">
 	 <h4>Sort by:</h4>
 	  <select ng-model="orderProp">
 	    <option value="title">Alphabetical</option>
@@ -9,20 +9,26 @@
 	    <option value="-vote_average">Votes</option>
 	    <option value="-popularity">Popularity</option>
 	    <option value="-revenue">Revenue</option>
-	    
 	  </select>
+
 	</div>
-	<div class="col-md-9 exploreMain">
+
+	<div class="col-md-9 exploreMain"> 
 		<tabset>
 		    <tab heading="In Theaters">
-			    <br>
-			    <div class="col-md-4 movie-box" ng-repeat="movie in nowplaying | filter:query | orderBy:orderProp">
-					    <a href="/movie/{{movie.id}}" ><img ng-src="{{baseURL}}/{{movie.poster_path}}"><br>
-					    {{movie.title}}</a><br>
+			    <br><div class="container-fluid">
+			    	<div class="col-md-4 movie-box" ng-repeat="movie in nowplaying | filter:query | orderBy:orderProp">
+					   <a href="/movie/{{movie.id}}" ><img ng-src="{{baseURL}}/{{movie.poster_path}}"><br>
+					   {{movie.title}}</a><br>
 					      Release: {{movie.release_date}}<br>
 					     Vote average: {{movie.vote_average}}<br>
-
+					     Genres: <br>
+					     <span ng-repeat="genre in movie.genres">
+					     {{ genre.name }}
+					     </span>
 				</div>
+			    	
+			    </div>
 			</tab>
 		    <tab heading="Upcoming">
 			    <br>

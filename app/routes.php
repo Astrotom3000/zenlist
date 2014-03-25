@@ -95,11 +95,16 @@ Route::get('users/{username}/favorites', ['as' => 'user.favorites', function ($u
 	}
 
 	$favorited_movies = Favorite::where('user_id', '=', $userid)->get(); //gets favorited movies of visited user
-	$last_updated = DB::table('favorites')->where('user_id', '=', $userid) //query db to get last updated date
-								->orderBy('updated_at', 'desc')
-								->first();
-	
-	$last_updated_date = substr($last_updated->updated_at, 0, 10);
+	try{
+		$last_updated = DB::table('favorites')->where('user_id', '=', $userid) //query db to get last updated date
+									->orderBy('updated_at', 'desc')
+									->first();
+		
+		$last_updated_date = substr($last_updated->updated_at, 0, 10);		
+	}catch(Exception $exception){
+		$last_updated_date = ' ';
+	}
+
 	//dd($last_updated_date);
 	$moviesArr = array();
 	foreach($favorited_movies as $movie){

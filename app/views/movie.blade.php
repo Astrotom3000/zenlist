@@ -265,7 +265,7 @@ function getRottenTomatoes(rtURL){
 
     //Display ratings
       if(critics_rating && critics_rating > 0){
-          $('#leftCol .ratings').append('<b>Ratings:</b><br><img src="'+cust_tomato+'" width="35" height="35" title="Critics Score from Rotten Tomatoes"/> <span class="percent"> '+critics_rating+ '%</span>  ');}
+          $('#leftCol .ratings').append('<b>Ratings:</b><br><img src="'+cust_tomato+'" width="30" height="30" title="Critics Score from Rotten Tomatoes"/> <span class="percent"> '+critics_rating+ '%</span>  ');}
 
       if(audience_rating && audience_rating > 60){
           $('#leftCol .ratings').append('&nbsp; &nbsp;<i class="fa fa-thumbs-o-up fa-lg" title="Audience Rating"></i> <span class="percent">'+ audience_rating + '%</span>');
