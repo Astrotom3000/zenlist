@@ -231,7 +231,7 @@
       float: none;
       width: auto;
       margin-top: 0;
-      background-color: transparent;
+      background-color: white;//transparent;
       border: 0;
       box-shadow: none;
       > li > a,
@@ -400,7 +400,7 @@
       &:hover,
       &:focus {
         color: @navbar-default-link-hover-color;
-        background-color: @navbar-default-link-hover-bg;
+        background-color: transparent;//@navbar-default-link-hover-bg;
       }
     }
     > .active > a {
@@ -408,7 +408,7 @@
       &:hover,
       &:focus {
         color: @navbar-default-link-active-color;
-        background-color: @navbar-default-link-active-bg;
+        background-color: transparent;//@navbar-default-link-active-bg;
       }
     }
     > .disabled > a {
@@ -416,7 +416,7 @@
       &:hover,
       &:focus {
         color: @navbar-default-link-disabled-color;
-        background-color: @navbar-default-link-disabled-bg;
+        background-color: transparent; //@navbar-default-link-disabled-bg;
       }
     }
   }
@@ -425,7 +425,7 @@
     border-color: @navbar-default-toggle-border-color;
     &:hover,
     &:focus {
-      background-color: @navbar-default-toggle-hover-bg;
+      background-color: transparent; //@navbar-default-toggle-hover-bg;
     }
     .icon-bar {
       background-color: @navbar-default-toggle-icon-bar-bg;
@@ -444,8 +444,9 @@
       &,
       &:hover,
       &:focus {
-        background-color: @navbar-default-link-active-bg;
-        color: @navbar-default-link-active-color;
+        background-color: transparent; // @navbar-default-link-active-bg;
+        color: @brand-primary; //@navbar-default-link-active-color;
+        //border-bottom: 2px solid @brand-primary;
       }
     }
 
