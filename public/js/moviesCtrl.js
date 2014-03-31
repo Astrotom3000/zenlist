@@ -21,9 +21,7 @@ angular.module("zenlist")
           //$log.log("Movies: ", $scope.movies);
           $log.log("Success: ", response);
         });
-
-       $scope.orderProp = '-vote_average';
-
+      
        $scope.convertToCurrency = function(val){
           var money = '$' + val.toLocaleString();
           return money;

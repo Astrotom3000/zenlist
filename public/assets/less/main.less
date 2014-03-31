@@ -126,10 +126,6 @@ ul{
     color: rgba(255, 255, 255, 0.75);
   }
 }
-.poster-thumb{
-  width: 200px;
-  height: 300px;
-}
 /* Content */
 .content{
   .flash-message{
@@ -188,19 +184,6 @@ ul{
 }
 
 /* Movie display */
-#movies-container{
-  img{
-    width: 200px;
-    height: 300px;
-  }
-}
-.caption{
-  h5{
-    margin-top: 0;
-    font-size: 12px;
-    text-align: center;
-  }
-}
 .movie-header{
   //padding-top: 0px;
   padding-right: 25px;
@@ -510,3 +493,87 @@ ul{
   margin: 0;
 }
 
+//-- Home Styles --//
+#movies-container{
+  padding-top: 50px;
+  img{
+    width: 200px;
+    height: 255px;
+  }
+}
+#front-row{
+  padding-top: 10px;
+}
+/** Side section **/
+#side-section{
+  padding-top: 80px;
+}
+
+#side-section .filter-list {
+  padding: 0;
+  border: 1px solid #EEE;
+  border-radius: 4px;
+  li{
+    padding: 8px 15px;
+    .active{
+        background-color: #F7F7F7;
+      }
+    a{
+        color: #919191;
+        text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2);
+      }
+  }
+
+  li:hover {
+    background-color: rgba(247, 247, 247, 1);
+    a{
+        color: #919191;
+        text-shadow: 0 -1px 0 rgba(255, 255, 255, 0.2);
+        text-decoration: none;
+    }
+  }
+}
+
+.filter-header {
+  padding: 10px 15px;
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #999999;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+}
+#side-section .module-top {
+  margin-top: 2em;
+  padding: 7px 15px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  background: @brand-primary;
+  font-size: 14px;
+  color: white;
+  font-weight: 500;
+}
+
+#side-section .module {
+  padding: 20px 10px;
+  border: 1px solid whitesmoke;
+  background: #FCFCFC;
+  ul{
+    padding: 0;
+  }
+}
+.comment {  border-bottom: 1px dashed #E7E7E7; padding-top:10px;}
+.comment-body {font-size: 10px;line-height: 16px;color: grey;*overflow: visible;zoom: 1;}
+.comment-heading {color:grey;margin: 0 0 5px;font-size: 12px;font-weight: 600;}
+.comment:first-child {padding:0px;}
+.comment:last-child {margin-top: 0;border: 0px;}
+.comment-object {display: block;margin-top: 3px;}
+.comment-heading .time {float: right;font-size: 9px;color: #ACACAC;}
+.comment .pull-left {margin-right: 10px;}
+.comment .pull-right {margin-left: 10px;}
+.comment-list {margin-left: 0;list-style: none;}

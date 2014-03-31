@@ -24,7 +24,7 @@
     {{ Form::close() }}  
       <ul class="nav navbar-nav navbar-right pad-right">
       @if(Auth::check())
-                  <li><a href="/">Home</a></li>
+                  <li><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
                   <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icomoon icon-menu"></i>  My Lists</a>
                     <ul class="dropdown-menu fallback">
@@ -46,7 +46,7 @@
                   </li>
                   </ul>
               @else
-                  <li><a href="/">Home</a></li>
+                  <li><a href="/"><i class="glyphicon glyphicon-home"></i> Home</a></li>
                   <li>{{ HTML::link('register', 'Register') }}</li>
                   <a href="{{ URL::route('signin') }}" class="btn btn-clear shift-right">Sign in</a> 
                   </ul>  
