@@ -10,7 +10,7 @@ class RegisterController extends BaseController {
 	public function create()
 	{
 		if(Auth::check()){
-			return Redirect::to('explore');
+			return Redirect::to('/');
 		}else
         	return View::make('user.register');
 	}
@@ -59,7 +59,7 @@ class RegisterController extends BaseController {
 				'password' => $input['password'],
 			]);
 			
-			if ($attempt) return Redirect::intended('explore')->with('flash_message', 'Thank you for registering!');
+			if ($attempt) return Redirect::intended('/')->with('flash_message', 'Thank you for registering!');
 		}
 	}
 

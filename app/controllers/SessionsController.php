@@ -11,16 +11,11 @@ class SessionsController extends BaseController {
 	{
 		
 		$previousURL = URL::previous();
-		if($previousURL == URL::route('registration') || $previousURL == URL::route('home')){
-			Session::put('pre_login_url', URL::route('explore'));
-		}else
-		{
-			Session::put('pre_login_url', $previousURL);
-		} 
+		Session::put('pre_login_url', $previousURL);
 
 		if(Auth::check()){
 			
-			return Redirect::to('explore');
+			return Redirect::to('/');
 		}
         	return View::make('user.login');
 
@@ -64,7 +59,7 @@ class SessionsController extends BaseController {
 	{
 		Auth::logout();
 
-		return Redirect::to('explore')->with('flash_message', 'You have been logged out.');
+		return Redirect::to('/')->with('flash_message', 'You have been logged out.');
 	}
 
 }

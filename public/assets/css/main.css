@@ -2998,8 +2998,8 @@ input[type="button"].btn-block {
   outline: 0;
 }
 .dropdown-menu {
-  background: linear-gradient(to right, #ffffff 0, rgba(255, 255, 255, 0.75) 70%, rgba(255, 255, 255, 0.01) 100%);
-  background-image: linear-gradient(to right, #ffffff 0px, rgba(255, 255, 255, 0.85098) 70%, rgba(255, 255, 255, 0.00784314) 100%);
+  background: linear-gradient(to right, #ffffff 0, rgba(255, 255, 255, 0.85) 100%, rgba(255, 255, 255, 0.01) 100%);
+  background-image: linear-gradient(to right, #ffffff 0px, rgba(255, 255, 255, 0.85098) 100%, rgba(255, 255, 255, 0.00784314) 100%);
   background-position-x: initial;
   background-position-y: initial;
   background-size: initial;
@@ -5930,6 +5930,10 @@ ul {
   background: #e74c3c;
   color: rgba(255, 255, 255, 0.75);
 }
+.poster-thumb {
+  width: 200px;
+  height: 300px;
+}
 /* Content */
 .content {
   padding-bottom: 150px;
@@ -5980,6 +5984,15 @@ ul {
   height: 200px;
 }
 /* Movie display */
+#movies-container img {
+  width: 200px;
+  height: 300px;
+}
+.caption h5 {
+  margin-top: 0;
+  font-size: 12px;
+  text-align: center;
+}
 .movie-header {
   padding-right: 25px;
   text-align: center;
@@ -6156,9 +6169,23 @@ ul {
   float: right;
 }
 /* Typeahead Search styles below */
-.auto-search {
-  margin-left: 40%;
-  width: 450px;
+@media (min-width: 1024px) {
+  .auto-search {
+    margin-left: 50px;
+    width: 300px;
+  }
+  .typeahead {
+    width: 300px;
+  }
+}
+@media (min-width: 1300px) {
+  .auto-search {
+    margin-left: 30%;
+    width: 450px;
+  }
+  .typeahead {
+    width: 450px;
+  }
 }
 .auto-search .btn-lg {
   padding: 7px 14px;
@@ -6184,11 +6211,10 @@ ul {
 .typeahead,
 .tt-query,
 .tt-hint {
-  width: 450px;
-  height: 40px;
+  height: 39px;
   padding: 8px 12px;
   font-size: 22px;
-  line-height: 30px;
+  line-height: 29px;
   border: 1px solid #ccc;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;

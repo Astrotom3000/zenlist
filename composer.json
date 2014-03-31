@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"fzaninotto/faker": "1.3.*",
-		"way/generators": "dev-master"
+		"way/generators": "dev-master",
+		"wtfzdotnet/php-tmdb-api": "dev-master"
 	},
 	"autoload": {
 		"classmap": [

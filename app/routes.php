@@ -11,22 +11,10 @@
 |
 */
 
-Route::get('/', array('as' => 'home', function()
+Route::get('/', function()
 {
-	if(Auth::check()){
-		return View::make('explore');
-	}else
-		return View::make('home');
-}));
-
-Route::get('home', function(){
 	return View::make('home');
 });
-
-Route::get('explore', array('as' => 'explore', function()
-{
-	return View::make('explore');
-}));
 
 Route::get('login', array('as' => 'signin', 'uses' => 'SessionsController@create'));
 
