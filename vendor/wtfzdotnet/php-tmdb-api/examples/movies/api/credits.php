@@ -16,6 +16,6 @@ require_once '../../../apikey.php';
 $token  = new \Tmdb\ApiToken(TMDB_API_KEY);
 $client = new \Tmdb\Client($token);
 
-$credits = $client->getMoviesApi()->getCredits(87421);
+$credits = $client->getMoviesApi()->getCredits(68726);
 
 var_dump($credits);

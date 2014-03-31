@@ -25,7 +25,7 @@ class SearchController extends BaseController {
     	else
     	{
     		//Get number of pages from search results
-    		$moviePagesTemp = $result = $client->getSearchApi()->searchMovies($search);
+    		$moviePagesTemp = $client->getSearchApi()->searchMovies($search);
     		$moviePages = $moviePagesTemp['total_pages'];
 
     		$resultsArray = [];
@@ -52,14 +52,45 @@ class SearchController extends BaseController {
 					$movieOb['title'] = $movieT->getTitle();
 					$movieOb['posterpath'] = $movieT->getPosterPath();
 					$movieOb['release'] = $movieT->getReleaseDate()->format('M j, Y');
+
+					$credits = $client->getMoviesApi()->getCredits($movieOb['id']);
+
+					if(empty($credits['cast']))
+					{
+						$movieOb['cast'] = "N/A";
+					}
+					else
+					{
+						$movieOb['cast'] = $credits['cast'];
+					}
+
+					if(empty($credits['crew']))
+					{
+						$movieOb['director'] = "N/A";
+					}
+					else
+					{
+						foreach($credits['crew'] as $crew)
+						{
+							if($crew['job'] == 'Director')
+							{
+								$movieOb['director'] = $crew['name'];
+								break;
+							}
+						}
+					}
+					
 					array_push($moviePage, $movieOb);
 				}
 
 				array_push($resultsArray['movies'], $moviePage);
     		}
+
+    		//$movieId = $moviePagesTemp['results'][0]['id'];
+    		//$credits = $client->getMoviesApi()->getCredits(73556);
     		
     		return View::make('searchresults')->with('results', $resultsArray);
-    		//return var_dump($resultsArray);
+    		//return var_dump($credits);
     	}
 	}
 }
