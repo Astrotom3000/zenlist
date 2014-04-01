@@ -7,44 +7,91 @@ class SearchController extends BaseController {
 	 *
 	 * @return Response
 	 */
+
 	public function store()
 	{
+		//Get input
 		$search = Input::get('searchterm');
+
+		//Setup client
 		$token  = new \Tmdb\ApiToken('ca85ff10880b1490989e8dbeb5932c00');
     	$client = new \Tmdb\Client($token);
-    	$repository = new \Tmdb\Repository\MovieRepository($client);
+   	
+    	if($search == '')
+    	{
+    		//If user enters no search word, return them to explore page with message
+    		return Redirect::back()->with('flash_message', 'Please enter a word or phrase in the search box!')
+    								->with('flash_type', 'alert-danger');
+    	}
+    	else
+    	{
+    		//Get number of pages from search results
+    		$moviePagesTemp = $client->getSearchApi()->searchMovies($search);
+    		$moviePages = $moviePagesTemp['total_pages'];
+    		$resultsArray = [];
+    		$resultsArray['movies'] = [];
+    		$resultsArray['tv'] = [];
+    		$resultsArray['people'] = [];
+    		
 
-		$searchMovies = $client->getSearchApi()->searchMovies($search);
+    		for($i = 1; $i <= $moviePages; $i++)
+    		{
+    			$query = new \Tmdb\Model\Search\SearchQuery\MovieSearchQuery();
+				$query->page($i);
 
-		/*
-		for ($i=0; $i < count($searchMovies['results']); $i++)
-		{
-			$movieID = $searchMovies['results'][$i]['id'];
-			$searchID = DB::table('movies')->where('tmdb_id', $movieID)->pluck('tmdb_id');
+				$repository = new \Tmdb\Repository\SearchRepository($client);	
+				$findMovies = $repository->searchMovie($search, $query);
 
-		if (is_null($searchID))
-			{
-				$newMovie = $client->getMoviesApi()->getMovie($movieID);
+				$findMoviesTemp = $findMovies->toArray();
 
-				$movie = new Movie;
-				$movie->title = $newMovie['title'];
-				$movie->tmdb_id = $newMovie['id'];
-				$movie->rottentomatoes_id = null;
-				$movie->imdb_id = null;
-				$movie->year = null;
-				$movie->release_date = $newMovie['release_date'];
-				$movie->critics_rating = null;
-				$movie->audience_rating = $newMovie['vote_average'];
-				$movie->runtime = $newMovie['runtime'];
-				$movie->genre = null;
-				$movie->poster_path = $newMovie['poster_path'];
+				$moviePage = [];
 
-				$movie->save();
-			}
-		}*/
+				foreach($findMoviesTemp as $movieT)
+				{
+					$movieOb = [];
+					$movieOb['id'] = $movieT->getId();
+					$movieOb['title'] = $movieT->getTitle();
+					$movieOb['posterpath'] = $movieT->getPosterPath();
+					$movieOb['release'] = $movieT->getReleaseDate()->format('M j, Y');
+					$directors = [];
+					$credits = $client->getMoviesApi()->getCredits($movieOb['id']);
 
-		return var_dump($searchMovies);
-		//return View::make('searchresults')->with('results', $result);
+					if(empty($credits['cast']))
+					{
+						$movieOb['cast'] = [];
+					}
+					else
+					{
+						$movieOb['cast'] = $credits['cast'];
+					}
+
+					if(empty($credits['crew']))
+					{
+						$movieOb['directors'] = [];
+					}
+					else
+					{
+						foreach($credits['crew'] as $crew)
+						{
+							if($crew['department'] == 'Directing')
+							{
+								array_push($directors, $crew);
+								//$movieOb['director'] = $crew;
+							}
+						}
+						$movieOb['directors'] = $directors;
+					}
+					
+					array_push($moviePage, $movieOb);
+				}
+
+				array_push($resultsArray['movies'], $moviePage);
+    		}
+		//return Response::json($resultsArray);
+    		//$movieId = $moviePagesTemp['results'][0]['id'];
+    		//$credits = $client->getMoviesApi()->getCredits(73556);
+    		return View::make('searchresults')->with('results', $resultsArray);
+    		//return var_dump($credits);
+    	}
 	}
-
 }

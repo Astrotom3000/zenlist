@@ -55,7 +55,7 @@
 <script src="{{ URL::asset('assets/js/fancybox/helpers/jquery.fancybox-media.js') }}"></script>
 -->
 <script>
-  $('div.flash-message').delay(2000).slideUp();
+  $('div.flash-message').delay(3000).slideUp();
  $('div.form-error').delay(4000).slideUp();
 
 $('nav li ul').hide().removeClass('fallback');

@@ -7,7 +7,7 @@
                             <div class="col-md-3" ng-repeat="movie in nowplaying | filter:query">
                                 <div class="thumbnail">
                                 	<a href="/movie/{{movie.id}}">
-                                        <img class="img-responsive" ng-src="{{baseURL}}/{{movie.poster_path}}">
+                                        <img class="img-responsive" ng-src="{{baseURL}}/{{movie.poster_path}}" onError="this.src='http://d3a8mw37cqal2z.cloudfront.net/assets/e6497422f20fa74/images/no-poster-w185.jpg'">
                                     </a>
                                 </div>
                             </div>

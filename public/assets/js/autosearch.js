@@ -1,5 +1,5 @@
 var thumbnailpath = "http://d3gtl9l2a4fn1j.cloudfront.net/t/p/w45";
-var noimg = "'none'";
+var noimg = "'http://d3a8mw37cqal2z.cloudfront.net/assets/e6497422f20fa74/images/no-poster-w92.jpg'";
 var tvArray = [];
 
 // instantiate the bloodhound suggestion engine
@@ -109,7 +109,7 @@ $('.auto-search .typeahead').typeahead({
   templates: {
     header: '<h4 class="category">Movies</h4>',
     suggestion: Handlebars.compile(
-      '<div class="query-box"><img src="{{image}}" onerror="this.style.display='+noimg+'" height="53" width="40" align="left"/><span class="query-text">{{title}} {{year}}</span</div>'
+      '<div class="query-box"><img src="{{image}}" onerror="this.src='+noimg+'" height="53" width="40" align="left"/><span class="query-text">{{title}} {{year}}</span</div>'
     )
   }
 },
@@ -120,7 +120,7 @@ $('.auto-search .typeahead').typeahead({
   templates: {
     header: '<h4 class="category">TV Shows</h4>',
     suggestion: Handlebars.compile(
-      '<div class="query-box"><img src="'+thumbnailpath+'{{poster}}" onerror="this.style.display='+noimg+'" height="53" width="40" float:left/>'+ '<span class="query-text">{{title}} {{year}}</span></div>'
+      '<div class="query-box"><img src="'+thumbnailpath+'{{poster}}" onerror="this.src='+noimg+'" height="53" width="40" float:left/>'+ '<span class="query-text">{{title}} {{year}}</span></div>'
     )
 
   }
@@ -132,7 +132,7 @@ $('.auto-search .typeahead').typeahead({
   templates: {
     header: '<h4 class="category">People</h4>',
     suggestion: Handlebars.compile(
-      '<div class="query-box"><img src="'+thumbnailpath+'{{photo}}" onerror="this.style.display='+noimg+'" align="left"/>'+ '<span class="query-text">{{name}}</span></div>'
+      '<div class="query-box"><img src="'+thumbnailpath+'{{photo}}" onerror="this.src='+noimg+'" align="left"/>'+ '<span class="query-text">{{name}}</span></div>'
     )
   }
 
